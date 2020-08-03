@@ -89,11 +89,19 @@
     2、id选择器     唯一的          #id{}
     3、class选择器  可以重复的      .class{}
     4、后代选择器    子孙后代       #ul1 li{}
-    5、亲子代选择器                 #ul1>li{}       IE6不支持
-
+    5、亲子代选择器                 #ul1>li{}               IE6不支持
+    6、分组选择器                   #div1,#div2,#div3{}
+    7、伪类选择器                   #header a:link{}       IE6下只支持a标签
+    7、伪类选择器                   #header a:visited{}       IE6下只支持a标签
+    7、伪类选择器                   #header a:hover{}       IE6下只支持a标签
+    7、伪类选择器                   #header a:active{}       IE6下只支持a标签
+    7、备注：必须按照link visited hover active 的顺序写
+    8、多累选择器                   div.aa{}        .aa.bb{} 既有.aa又有.bb
+                            
 
     权重值：
-    id > class > tag
+   !important > 内联 > id 100 > class 10 > tag 1
+   当权重值相同时，后定义的会覆盖先定义的
 
 
  -->

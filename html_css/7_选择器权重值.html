@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7_选择器权重值</title>
+</head>
+<style>
+    #div1 {
+        background: #ff0000;
+    }
+    
+    .div1 {
+        background: #00ff00;
+    }
+    
+    div {
+        /* background: #ff0!important; */
+    }
+    
+    #div2 .div3 {
+        background: #ff0000;
+    }
+    
+    #div2 div {
+        background: #00ff00;
+    }
+    
+    .aa {
+        background: #ff0000;
+    }
+    
+    .bb {
+        color: #00ff00;
+        background: #0000ff;
+    }
+    
+    div.cc {
+        font-size: 40px;
+    }
+    
+    .aa.bb {
+        color: aquamarine;
+    }
+    /* .dd #ee 与 #dd .ee 权重值相同 */
+    
+    .dd #ee {
+        background: #ff0000;
+    }
+    
+    #dd .ee {
+        background: #00ff00;
+    }
+</style>
+
+<body>
+    <div id="div1" class="div1" style="background: #ccc;">div1</div>
+
+    <div id="div2">
+        <div class="div3">div3</div>
+    </div>
+
+    <div class="aa bb">class-aa-bb
+    </div>
+
+    <div class="cc">
+        cc
+    </div>
+
+    <div id="dd" class="dd">
+        <div id="ee" class="ee">ee</div>
+    </div>
+
+
+
+</body>
+
+</html>

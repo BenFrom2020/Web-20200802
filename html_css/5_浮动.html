@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5_浮动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #div1 {
+            background: #ff0000;
+        }
+        
+        #div2 {
+            background: #00ff00;
+        }
+        
+        #div3 {
+            background: #0000ff;
+        }
+        /* 浮动后父元素高度变为0 */
+        /* 浮动元素 脱离普通文档流 */
+        
+        #div1,
+        #div2,
+        #div3 {
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parent">
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+    </div>
+    <h1>这是h1标题
+    </h1>
+
+</body>
+
+</html>

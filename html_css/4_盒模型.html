@@ -17,13 +17,104 @@
             border: 10px solid #000000;
             margin: 50px;
         }
+        
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        }
+        /* 为   父子关系的div加 外边距 */
+        /* 第一种可以使用       float */
+        /* 第二种方法可以 在父标签中使用   overflow:hidden*/
+        
+        #div3 {
+            width: 400px;
+            height: 400px;
+            background: #00ff00;
+            overflow: hidden;
+            /* overflow: scroll; */
+            /* overflow: auto; */
+        }
+        
+        #div4 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            margin-top: 100px;
+        }
+        /* 通过overflow:hidden 解决文字溢出问题 */
+        
+        #div5 {
+            width: 100px;
+            border: solid 1px #000000;
+            overflow: hidden;
+        }
+        
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* 两个参数 表示左右 */
+            /* 四个参数 上 右 下 左 */
+            padding: 50px;
+            border: 10px solid #000000;
+            margin: 50px;
+        }
+        
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background: #00ff00;
+        }
+        /* 为   父子关系的div加 外边距 */
+        /* 第一种可以使用       float */
+        /* 第二种方法可以 在父标签中使用   overflow:hidden*/
+        
+        #div3 {
+            width: 400px;
+            height: 400px;
+            background: #00ff00;
+            overflow: hidden;
+            /* overflow: scroll; */
+            /* overflow: auto; */
+        }
+        
+        #div4 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            margin-top: 100px;
+        }
+        /* 通过overflow:hidden 解决文字溢出问题 */
+        
+        #div5 {
+            width: 100px;
+            border: solid 1px #000000;
+            overflow: hidden;
+        }
     </style>
 </head>
 
 <body>
+    <div id="div2">
+        div2
+    </div>
     <div id="div1">
         div
+    </div>
+
+    <div id="div3">
+        <div id="div4"></div>
+    </div>
+
+
+    <div id="div5">
+        adfa dfadf asdfasdfasdfasd fasdfas dfasdfas dfasdf
     </div>
 </body>
 
 </html>
+
+<!-- 
+    BFC
+ -->

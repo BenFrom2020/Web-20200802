@@ -12,7 +12,19 @@
     <meta name="keywords" content="裤子;鞋子;袜子">
     <meta name="description" content="这是一个卖衣服的网站">
     <title>1_2_html</title>
-
+    <style>
+        #block1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+        
+        #inline1 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+    </style>
 </head>
 
 <body>
@@ -83,13 +95,17 @@
     </span>
 
     <b>这是b标签</b>
+
+
+    <div id="block1">块级元素div-block1</div>
+    <span id="inline1">行级元素span-inline1</span>
 </body>
 
 </html>
 
 <!-- 
-    块级元素 block: 自己占一行  h1~h6   li  ol ul   table p     (p里面不能嵌套块级元素  p有16px的上下外边距)
+    块级元素 block: 自己占一行 可以设置宽高 h1~h6   li  ol ul   table p     (p里面不能嵌套块级元素  p有16px的上下外边距)
     备注：块级元素在不设置宽的情况下，自动设置为父元素的宽，高度为子元素撑起的高度
-    行级元素 inline: 行级元素和行级元素会在一行显示 a   span    b
+    行级元素 inline: 行级元素和行级元素会在一行显示 a   span    b      不可以设置宽和高     宽和高是靠子元素撑起来的 
     行块级元素: img
  -->

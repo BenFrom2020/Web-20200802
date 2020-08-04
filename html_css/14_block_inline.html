@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_block_inline</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        
+        #block1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* 将块级元素转化为行级元素 */
+            display: inline;
+        }
+        
+        #inline1 {
+            background: #00ff00;
+            /* 行级元素默认不能设置宽和高 */
+            /* 将行级元素设置为块级元素 便可以设置宽和高了 */
+            display: block;
+            width: 200px;
+            height: 200px;
+            /* 行级元素脱离文档流后 不再受行级限制 可以设置宽和高 */
+            /* float: left; */
+            /* position: absolute; */
+        }
+        
+        .aa {
+            width: 200px;
+            height: 200px;
+            background: #cccccc;
+            /* 按行级元素显示 块级元素 */
+            display: inline-block;
+        }
+        
+        #pic1 {
+            /* img 只设置width或height中的一个，另一个属性等比缩放 */
+            width: 80px;
+        }
+        
+        #username {
+            width: 120px;
+            height: 30px;
+            /* focus后 边框 外高亮效果 */
+            outline: none;
+        }
+        
+        #ta {
+            /* 设置文本框不可改变大小 */
+            resize: none;
+        }
+        
+        #div1 {
+            background: #ff0000;
+            width: 200px;
+            height: 200px;
+            padding-top: 200px;
+            border: 10px solid #000000;
+            margin-left: 50px;
+        }
+        
+        #div2 {
+            background: #0000ff;
+            width: 200px;
+            height: 200px;
+        }
+        
+        #span1 {
+            background: #00ff00;
+        }
+        
+        #span2 {
+            background: #ff0;
+            /* padding 可以用于行级元素 */
+            padding: 20px;
+            /* margin   用于行级元素 只有左右生效 */
+            margin: 30px;
+        }
+        
+        #span3 {
+            background: #0000ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="block1">块级元素div-block1</div>
+    <span id="inline1">行级元素span-inline1</span>
+    <span id="inline2">行级元素span-inline2</span>
+    <br>
+    <!-- 此处div间有空格，是由于代码中的div标签对之间存在回车换行符 -->
+    <div class="aa">div01</div>
+    <div class="aa">div02</div>
+    <div class="aa">div03</div>
+    <br>
+    <br>
+    <br>
+
+    <img id="pic1" src="circle.jpg" alt="">
+    <img id="pic2" src="circle.jpg" alt="">
+
+    <br>
+    <br>
+
+    <form action="user/register">
+        <label for="username">用户名:</label>
+        <input id="username" type="text">
+
+        <br>
+        <label for="password">密码:</label>
+        <input id="password" type="password">
+
+        <br>
+        <label for="">性别:</label>
+        <input type="radio" name="sex">男
+        <input type="radio" name="sex">女
+
+        <br>
+        <label for="">爱好:</label>
+        <input type="checkbox" name="hobby" id="">足球
+        <input type="checkbox" name="hobby" id="">篮球
+        <input type="checkbox" name="hobby" id="">排球
+
+        <br>
+        <select name="" id="">
+            <option value="">哈尔滨</option>
+            <option value="">齐齐哈尔</option>
+            <option value="">大庆</option>
+        </select>
+
+        <br>
+        <label for="">备注:</label>
+        <textarea name="" id="ta" cols="30" rows="10"></textarea>
+
+
+        <br>
+        <input type="submit" value="注册">
+        <input type="reset" value="重置">
+    </form>
+
+    <div id="div1">这是一个div</div>
+    <span id="span1" class="span">这是一个span</span><span id="span2">这是一个span</span><span id="span3" class="span">这是一个span</span>
+    <div id="div2"></div>
+</body>
+
+</html>
+
+<!-- 
+    行级 -> 块级    block
+    块级 -> 行级    inline 
+    display:inline-block;   不支持IE6
+ -->

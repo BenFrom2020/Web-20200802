@@ -11,39 +11,183 @@
             padding: 0;
         }
         
-        #div1 {
+        body {
+            height: 4000px;
+        }
+        
+        #parent1,
+        #parent2,
+        #parent3 {
+            /* 可以通过写定高度  避免子元素浮动后  父元素高度变为0 */
+            /* height: 200px; */
+        }
+        
+        #div1-1,
+        #div2-1,
+        #div3-1,
+        #div4-1 {
             background: #ff0000;
         }
         
-        #div2 {
+        #div1-2,
+        #div2-2,
+        #div3-2,
+        #div4-2 {
             background: #00ff00;
         }
         
-        #div3 {
+        #div1-3,
+        #div2-3,
+        #div3-3,
+        #div4-3 {
             background: #0000ff;
         }
         /* 浮动后父元素高度变为0 */
         /* 浮动元素 脱离普通文档流 */
         
-        #div1,
-        #div2,
-        #div3 {
+        #div1-1,
+        #div1-2,
+        #div1-3,
+        #div2-1,
+        #div2-2,
+        #div2-3 {
             width: 200px;
             height: 200px;
+            /* 浮动会造成 块级元素覆盖  而行级元素则不会 */
             float: left;
+        }
+        
+        #div1-4 {
+            /* 可以通过clear 清除浮动，避免元素受之前元素浮动影响 */
+            /* clear: left; */
+            /* clear: right; */
+            /* clear: both; */
+            width: 650px;
+            height: 300px;
+            background: #ffff00;
+        }
+        
+        #h1-2 {
+            /* 可以通过clear 清除浮动，避免元素受之前元素浮动影响 */
+        }
+        
+        #div3-1,
+        #div3-2,
+        #div3-3 {
+            width: 200px;
+            height: 200px;
+        }
+        
+        #div3-2 {
+            /* 相对定位:   相对于自己的初始位置:    不脱离文档流 */
+            position: relative;
+            top: 100px;
+            left: 100px;
+        }
+        
+        #parent4 {
+            width: 600px;
+            height: 600px;
+            background: #ff0000;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #div4-1 {
+            width: 400px;
+            height: 400px;
+            background: #00ff00;
+            margin-top: 150px;
+            /* position: relative; */
+        }
+        
+        #div4-2 {
+            width: 200px;
+            height: 200px;
+            background: #0000ff;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        
+        #parent5 {
+            width: 100px;
+            height: 100px;
+            background: #ff0ff0;
+            position: fixed;
+            right: 100px;
+            bottom: 100px;
+        }
+        
+        #parent6 {
+            width: 100%;
+            height: 50px;
+            background: #ff7200;
+            margin-top: 500px;
+            position: sticky;
+            top: 100px;
+        }
+        
+        #parent7 {
+            margin-top: 300px;
+            width: 500px;
+            height: 300px;
+            background: #000000;
         }
     </style>
 </head>
 
 <body>
-    <div id="parent">
-        <div id="div1"></div>
-        <div id="div2"></div>
-        <div id="div3"></div>
+    <div id="parent1">
+        <div id="div1-1"></div>
+        <div id="div1-2"></div>
+        <div id="div1-3"></div>
     </div>
-    <h1>这是h1标题
+    <div id="div1-4">块级元素 会被覆盖</div>
+
+    <br>
+    <div id="parent2">
+        <div id="div2-1"></div>
+        <div id="div2-2"></div>
+        <div id="div2-3"></div>
+    </div>
+    <h1 id="h1-2">这是h1标题:行级元素 不会被覆盖
     </h1>
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="parent3">
+        <div id="div3-1"></div>
+        <div id="div3-2"></div>
+        <div id="div3-3"></div>
+    </div>
+
+    <br>
+    <div id="parent4">
+        <div id="div4-1">
+            <div id="div4-2"></div>
+        </div>
+    </div>
+
+    <div id="parent5">
+        fixed
+    </div>
+
+
+    <div id="parent6"></div>
+    <div id="parent7"></div>
 </body>
 
 </html>
+<!-- 
+    position:
+        static:默认定位 静态
+        relative:   相对定位   相对自己的初始位置                                    不脱离文档流
+        absolute:   决定定位   相对于已定位的祖先元素,如果不存在则相对于body         脱离文档流
+        fixed:      固定定位                                                        脱离文档流      包含块为body
+        sticky:     粘性定位                                                         不兼容IE早起版本
+ -->

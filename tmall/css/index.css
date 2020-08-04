@@ -9,6 +9,7 @@
     font-size: 12px;
     /* 单行文字垂直居中 */
     line-height: 32px;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 #login-info {
@@ -22,6 +23,8 @@
 #quick-menu .menu {
     float: left;
     position: relative;
+    padding: 0 14px;
+    height: 33px;
 }
 
 #header a,
@@ -34,11 +37,11 @@
 }
 
 #header a {
-    padding: 0 14px;
+    /* padding: 0 14px; */
     /* margin: 0 14px; */
 }
 
-#header .triangle ::after {
+#header .triangle::after {
     content: '';
     border-width: 3px;
     border-style: solid;
@@ -51,14 +54,103 @@
     right: 2px;
     top: 50%;
     margin-top: -1.5px;
+    transition: none;
+    transform-origin: 3px 1.5px;
 }
 
 .iconfont {
-    background: #00f000;
+    /* background: #00f000; */
     font-size: 12px;
     color: #ff0036;
-    margin-left: 0;
-    left: 0px;
+    /* margin-left: 0; */
+    /* left: 0px; */
+}
+
+#login-info .register {
+    padding: 0;
+}
+
+#header .triangle:hover::after {
+    transform: rotate(180deg);
+    transition: all 0.5s ease;
+    /* 设置旋转圆点 */
+}
+
+#header .triangle {
+    border-style: solid;
+    border-width: 0 1px 0 1px;
+    border-color: transparent;
+}
+
+#header .triangle:hover {
+    background: #ffffff;
+    border-color: #e5e5e5;
+    cursor: pointer;
+}
+
+#header .triangle:hover>a {
+    text-decoration: underline;
+    color: #ff0036;
+}
+
+#quick-menu .submenu {
+    position: absolute;
+    width: 74px;
+    background: #ffffff;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    top: 33px;
+    left: -1px;
+    padding: 0 14px;
+    display: none;
+}
+
+#header .triangle:hover .submenu {
+    display: block;
+}
+
+#quick-menu .submenu>a:hover {
+    text-decoration: underline;
+    color: #ff0036;
+}
+
+#quick-menu .split {
+    width: 1px;
+    height: 14px;
+    background: #cccccc;
+    padding: 0;
+    margin: 9px 0 0 10px;
+}
+
+#quick-menu .qr-code {
+    width: 175px;
+    height: 227px;
+    border: 1px solid #e5e5e5;
+    position: absolute;
+    top: 28px;
+    left: -53px;
+    background: #ffffff;
+    box-shadow: 0 0 5px #aaa;
+    display: none;
+}
+
+#quick-menu .qr-code::after {
+    content: '';
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff;
+    position: absolute;
+    left: 80px;
+    top: -10px;
+}
+
+#quick-menu .mobile:hover .qr-code {
+    display: block;
+}
+
+#quick-menu .qr-code img {
+    width: 175px;
 }
 
 

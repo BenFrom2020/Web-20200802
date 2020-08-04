@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_css3动画</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            border: 5px dashed #000000;
+            margin: 100px auto;
+        }
+        
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* -webkit-transition: transform 1s linear;
+            -moz-transition: transform 1s linear;
+            -ms-transition: transform 1s linear;
+            -o-transition: transform 1s linear; */
+            /* transition: transform 1s linear, background 1s linear; */
+            transition: all 1s linear;
+        }
+        
+        #div2:hover {
+            /* 旋转元素 */
+            /* 谷歌浏览器 */
+            /* -webkit-transform: rotate(30deg); */
+            /* 火狐浏览器 */
+            /* -moz-transform: rotate(30deg); */
+            /* 微软浏览器 */
+            /* -ms-transform: rotate(30deg); */
+            /* Opera浏览器 */
+            /* -o-transform: rotate(30deg); */
+            /* 最新浏览器 */
+            transform: rotate(30deg);
+            background: #00ff00;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div id="div2">div2</div>
+    </div>
+</body>
+
+</html>

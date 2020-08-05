@@ -19,7 +19,7 @@ a {
 .wrapper {
     width: 1230px;
     height: 100%;
-    /* 设置内容 水平居中 */
+    /* 设置 元素 水平居中 */
     margin: 0 auto;
     /* background: red; */
 }

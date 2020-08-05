@@ -59,16 +59,15 @@
 }
 
 .iconfont {
-    /* background: #00f000; */
     font-size: 12px;
     color: #ff0036;
-    /* margin-left: 0; */
-    /* left: 0px; */
 }
 
-#login-info .register {
-    padding: 0;
+#login-info a {
+    padding-left: 15px;
 }
+
+#login-info .register {}
 
 #header .triangle:hover::after {
     transform: rotate(180deg);
@@ -89,8 +88,11 @@
 }
 
 #header .triangle:hover>a {
-    text-decoration: underline;
     color: #ff0036;
+}
+
+#header .triangle>a:hover {
+    text-decoration: underline;
 }
 
 #quick-menu .submenu {
@@ -110,7 +112,7 @@
     display: block;
 }
 
-#quick-menu .submenu>a:hover {
+#quick-menu .submenu a:hover {
     text-decoration: underline;
     color: #ff0036;
 }
@@ -154,4 +156,115 @@
 }
 
 
+/* 6-商家支持 开始 */
+
+#quick-menu .seller {
+    width: 120px;
+    /* display: block; */
+    left: auto;
+    right: -1px;
+    margin: auto 0;
+}
+
+#quick-menu .seller-title {
+    line-height: 20px;
+    color: #666;
+}
+
+#quick-menu .seller a {
+    float: left;
+    width: 60px;
+    position: relative;
+    line-height: 25px;
+    color: #666;
+}
+
+#quick-menu .seller .ta-right {
+    text-align: right;
+}
+
+#quick-menu .seller-ask {
+    text-indent: 12px;
+}
+
+
+/* 6-商家支持 结束*/
+
+
 /* header 结束 */
+
+
+/* logo-search 开始 */
+
+#logo {
+    float: left;
+    background-attachment: #ff0000;
+}
+
+#search {
+    float: left;
+    /* background: #00ff00; */
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#logo img {
+    width: 240px;
+}
+
+#search .search-box {
+    border: 2px solid #ff0036;
+}
+
+#search .search-ipt {
+    width: 483px;
+    height: 32px;
+    border: none;
+    /* input focus时边框 */
+    outline: none;
+    font-size: 14px;
+    text-indent: 10px;
+}
+
+#search .search-btn {
+    /* float: left; */
+    width: 133px;
+    height: 38px;
+    border: none;
+    background: #ff0036;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#search .hot {
+    float: left;
+    border-right: 1px solid #cccccc;
+    padding: 0 15px;
+    height: 15px;
+    line-height: 15px;
+}
+
+#search .hot a {
+    color: #999999;
+    font-size: 12px;
+}
+
+#search .hot-query {
+    margin-top: 5px;
+}
+
+#search .hot-query-highlight a {
+    color: #ff0036;
+}
+
+#search .first {
+    padding-left: 0;
+}
+
+#search .last {
+    border-right: none;
+}
+
+
+/* logo-search 结束 */

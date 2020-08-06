@@ -1,5 +1,9 @@
 /* index.html 的样式 */
 
+body {
+    height: 2000px;
+}
+
 
 /* header 开始 */
 
@@ -135,6 +139,7 @@
     background: #ffffff;
     box-shadow: 0 0 5px #aaa;
     display: none;
+    z-index: 1;
 }
 
 #quick-menu .qr-code::after {
@@ -196,9 +201,14 @@
 
 /* logo-search 开始 */
 
+#logo-search {
+    height: 134px;
+}
+
 #logo {
     float: left;
     background-attachment: #ff0000;
+    /* background: #00ff00; */
 }
 
 #search {
@@ -268,3 +278,210 @@
 
 
 /* logo-search 结束 */
+
+
+/* main-nav 开始 */
+
+#main-nav {}
+
+#main-nav .nav {
+    margin-left: 230px;
+    height: 35px;
+}
+
+#main-nav .nav li {
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 15px;
+}
+
+#main-nav .nav-img {
+    width: 100px;
+}
+
+#main-nav .nav a {
+    font-size: 16px;
+    color: #333333;
+    font-weight: 500;
+}
+
+#main-nav .nav a:hover {
+    color: #ff0036;
+}
+
+
+/* main-nav 结束 */
+
+
+/* banner 开始 */
+
+#banner {
+    /* background: #4950cd; */
+}
+
+#banner .wrapper {
+    height: 500px;
+    background: url(../img/banner1.webp) no-repeat center;
+    position: relative;
+    background-color: #4650cd;
+}
+
+#banner span {
+    color: white;
+}
+
+#banner .category-type {
+    width: 200px;
+    height: 536px;
+    background-color: rgba(0, 0, 0, 0.55);
+    position: absolute;
+    top: -36px;
+}
+
+#banner .category-type li {
+    height: 36px;
+    padding-left: 10px;
+    line-height: 36px;
+}
+
+#banner .category-type .shangpin-fenlei {
+    background: #ff0036;
+}
+
+#banner .category-type .iconfont {
+    color: #ccc;
+}
+
+#banner .category-type .shangpin-fenlei .iconfenlei {
+    color: white;
+}
+
+
+/* banner 结束 */
+
+
+/* side-bar 开始 */
+
+#side-bar {
+    width: 35px;
+    background: #cccccc;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: 615px;
+}
+
+#side-bar .icongouwuchekong {
+    /* 标签i为行级元素 不能为行级元素设置上下边距 */
+    display: block;
+    margin-top: 102px;
+    color: white;
+    height: 35px;
+    line-height: 35px;
+    /* background: red; */
+    text-align: center;
+}
+
+#side-bar .side-bar-tab {
+    position: relative;
+}
+
+#side-bar .vip {
+    width: 90px;
+    height: 35px;
+    background: #494949;
+    color: white;
+    position: absolute;
+    /* left: -90px; */
+    left: -200px;
+    top: 0;
+    text-align: center;
+    line-height: 35px;
+    font-size: 12px;
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+#side-bar .vip::after {
+    width: 0;
+    height: 0;
+    content: '';
+    border-style: solid;
+    border-width: 4px;
+    border-color: transparent transparent transparent #494949;
+    position: absolute;
+    top: 14px;
+    right: -8px;
+}
+
+#side-bar .side-bar-tab:hover .icongouwuchekong {
+    background: #ff0036;
+}
+
+#side-bar .side-bar-tab:hover .vip {
+    opacity: 1;
+    left: -90px;
+}
+
+
+/* side-bar 结束 */
+
+
+/* brand-list 开始 */
+
+#brand-list .brand {
+    width: 150px;
+    height: 100px;
+    position: relative;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+#brand-list .brand img {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px;
+    margin-left: -50px;
+}
+
+#brand-list .brand-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    text-align: center;
+    transition: opacity .3s ease;
+}
+
+#brand-list .brand:hover .brand-mask {
+    opacity: 1;
+    /* background-color: rgb(0, 0, 0, 0.8); */
+}
+
+#brand-list .coupon {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#brand-list .enter {
+    width: 63px;
+    height: 18px;
+    background: #ff0036;
+    color: #ffffff;
+    border-radius: 9px;
+    font-size: 12px;
+    text-align: center;
+    margin-left: auto;
+}
+
+
+/* brand-list 结束 */

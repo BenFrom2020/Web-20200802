@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19_透明度</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            /* background: rgba(255, 0, 0, .5); */
+            background: #ff0000;
+            opacity: 1;
+            /* 存在兼容性问题  需同时使用filter */
+            /* filter: alpha(opacity=50); */
+            /* 0~100 */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>

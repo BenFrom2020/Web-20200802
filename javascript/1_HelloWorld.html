@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_HelloWorld</title>
+    <style>
+        /* css注释 */
+    </style>
+</head>
+
+<body>
+    <!-- html注释 -->
+    <h1 id="h1-id">这是h1</h1>
+
+    <script>
+        document.write('<h1>Hello World!');
+        // var => variable
+        var a = 8;
+        var b = a + 3;
+        var c = b + 4;
+        // 后定义的会覆盖先定义的
+        var a = 9;
+        console.log(b);
+        console.log(c);
+        console.log(a);
+
+        var d;
+        // d不赋值 d为未定义变量
+        console.log(d);
+        d = 5;
+        console.log(d);
+
+        var num = Math.PI;
+        // 输出PI值 3.141592653589793
+        console.log(num);
+
+        // 变量名 建议驼峰式aAAA
+        var productNumber = 'baozi';
+
+        // js 是弱类型语言
+        // js的基本数据类型:number  string  boolean undefined   null
+        // 5的数据类型为number
+        var e = 5;
+        console.log(typeof(e));
+
+        // 0.5的数据类型也为number 并非float
+        var f = 0.5;
+        console.log(typeof(f));
+
+        // 'name'的数据类型为string
+        var g = 'name';
+        console.log(typeof(g));
+
+        // 'n'的数据类型也为string 并非char
+        var h = 'n';
+        console.log(typeof(h));
+
+        // true的数据类型为boolean
+        var i = true;
+        console.log(typeof(i));
+
+        // j的数据类型为undefined
+        var j;
+        console.log(typeof(j));
+
+        // 可以用一个var 定义多个变量
+        var k = 1,
+            l = 'a',
+            m = true;
+
+        // alert('hello');
+
+        var str1 = 'hello';
+        var str2 = 'world';
+        var str3 = str1 + ' ' + str2
+        console.log(str3);
+
+        // str1 = str1 + str2;
+        // str1 += str2;
+
+        var n = 5;
+        // 后自增   先运算   再自增 此时输出5
+        console.log(n++);
+        // 自增后 此时输出6
+        console.log(n);
+
+        var o = 10;
+        // 先自增 此时输出11
+        console.log(++o);
+        // 先自增 此时输出11
+        console.log(o);
+
+        // NaN not a number
+        // Infinity 无穷大
+
+        // 5=='5' 判断值是否相同  返回true
+        // 5==='5' 判断值  和  类型 是否同时相等    返回false
+
+        // undifined 0 和空字符串''为false
+        if (0) {
+            console.log(true);
+        } else {
+            console.log(false);
+        }
+
+        var msg = window.prompt("请输入一个数字", "默认值");
+        console.log(msg);
+    </script>
+</body>
+
+</html>

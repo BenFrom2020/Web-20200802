@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.2</title>
+</head>
+
+<body>
+
+    <script>
+        // 判断闰年
+        function getLeapYear(year) {
+            //优先级 && > || 
+            if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        var z = getLeapYear(2016);
+        console.log(z);
+
+        var now = new Date();
+        var fullYear = now.getFullYear();
+        var bFlag = getLeapYear(fullYear);
+        console.log(bFlag);
+    </script>
+</body>
+
+</html>

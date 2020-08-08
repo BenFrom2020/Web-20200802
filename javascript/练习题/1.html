@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.html</title>
+</head>
+
+<body>
+
+    <script>
+        // js   ES5 ES6--ES2015
+        var a = 5;
+        a = 6;
+
+        // ES6
+        // 常量 不可以被改变
+        const b = 6;
+        // b = 7;
+
+        var val1 = 10;
+        // 一般函数名定义为foo 表示没有实际意义的函数
+        function foo() {
+            // 写var是局部  不写var是全局的
+            // 如果使用var 表示：在内存堆栈中 重新定义了一个var val1=11; 与前面var val1=10;是相互独立的
+            val1 = 11;
+            console.log('1===' + val1);
+        }
+        foo();
+        console.log('2===' + val1);
+    </script>
+
+    <script>
+        var a = 5;
+        true || (a = 6);
+        console.log('||前语句为真，不执行后语句a=6;语句,所以---a=' + a);
+
+        var a = 5;
+        false || (a = 6);
+        console.log('||前语句为假，执行后语句a=6;语句,所以---a=' + a);
+    </script>
+
+    <script>
+        var a = 5;
+        true && (a = 6);
+        console.log('&&前语句为真，执行后语句a=6;语句,所以---a=' + a);
+
+        var a = 5;
+        false && (a = 6);
+        console.log('&&前语句为假，不执行后语句a=6;语句,所以---a=' + a);
+    </script>
+
+    <script>
+        // 变量命名潜规则
+        var sUsername = 'zs'; //string
+        var iAGe = 19; //int
+        var fPrice = 10.5; //float
+        var bFlag = true; // boolean
+        var oDiv; //object
+    </script>
+
+    <script>
+        // 字符串换行 \n
+        console.log('abc\ndef');
+    </script>
+
+    <script>
+        // 字符串拼接
+        var sName = 'xx';
+        console.log('我在' + sName + '学习');
+
+        console.log('单引号内含双引号:' + '我在"xx"学习');
+        console.log('双引号内含单引号:' + "我在'xx'学习");
+        console.log('利用转译字符实现双引号内含双引号:' + "我在\"xx\"学习");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my_lottery</title>
+</head>
+
+<body>
+
+    <script>
+        var resultSet = [];
+
+        function getRandom() {
+            var newVal = 1 + Math.floor(Math.random() * 36);
+            return newVal;
+        }
+
+        var bFlag;
+
+        function checkRandom() {
+            bFlag = 0
+            var newCheckVal = getRandom();
+            if (resultSet.length == 0) {
+                bFlag = 2;
+            } else {
+                for (var i = 0; i < resultSet.length; i++) {
+                    if (resultSet[i] == newCheckVal) {
+                        bFlag = 1;
+                    }
+                }
+            }
+            if (bFlag == 2) {
+                resultSet.push(newCheckVal);
+            } else if (bFlag == 1) {
+                checkRandom();
+            } else if (bFlag == 0) {
+                resultSet.push(newCheckVal);
+            }
+        }
+
+        for (var i = 0; i < 7; i++) {
+            checkRandom();
+        }
+
+        console.log(resultSet);
+
+        var lotteryHtml = '';
+        for (var i = 0; i < resultSet.length; i++) {
+            lotteryHtml += resultSet[i] + ' ';
+        }
+        document.write(lotteryHtml);
+    </script>
+</body>
+
+</html>

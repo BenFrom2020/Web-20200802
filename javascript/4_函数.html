@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_函数</title>
+</head>
+
+<body>
+
+    <!-- 函数 -->
+    <script>
+        // 函数定义 第1种方式
+        function sum(x, y) { //形式参数:x,y
+            // 判断传入参数x,y是否是一个数
+            if (isNaN(x)) {
+                x = 2;
+            }
+            if (isNaN(y)) {
+                y = 3;
+            }
+            var z = x + y;
+            console.log(z);
+            //函数无返回值时  函数sum(x,y)不能被作为参数使用
+            return z; //返回值z
+            // return后面的代码alert('123');不会被执行
+            alert('123');
+        }
+
+        // 函数调用
+        sum(3, 4); //实际参数:3,5
+        sum(6, 8); //实际参数:6,8
+        sum(); //空参数
+        console.log(sum(9, 10)); //函数无返回值时  不能被作为参数使用
+        var result = sum(7, 8); //将函数返回值 赋值给 result
+        console.log(result);
+    </script>
+    <script>
+        // 函数定义 第2种
+        // 此种函数定义方式 必须在定义之后 才能调用函数fn
+        var fn = function() {
+            console.log('fn1');
+        }
+
+        fn();
+    </script>
+</body>
+
+</html>

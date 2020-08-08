@@ -105,8 +105,65 @@
             console.log(false);
         }
 
-        var msg = window.prompt("请输入一个数字", "默认值");
-        console.log(msg);
+        // var msg = window.prompt("请输入一个数字", "默认值");
+        // console.log(msg);
+    </script>
+
+    <!-- 分支判断与循环 -->
+    <!-- 分支判断 -->
+    <script>
+        var condition = true;
+        if (condition) {
+            console.log('我将出现');
+        }
+
+        // var age = window.prompt('请输入你的年龄', '12');
+        var age = 55;
+        if (age < 18) {
+            console.log('未成年');
+        } else if (age >= 18 && age < 50) {
+            console.log('成年');
+        } else if (age >= 50 && age < 70) {
+            console.log('中老年');
+        } else {
+            console.log('真长寿啊');
+        }
+
+        //判断是否为数字
+        console.log(isNaN(NaN));
+
+        // 分支语句
+        var newVal2 = 'a';
+        switch (newVal2) {
+            case 2:
+                console.log(2);
+                break;
+            case 3:
+                console.log(3);
+                break;
+            case 4:
+                console.log(4);
+                break;
+                // 当newVal2为a或A时可执行以下语句
+            case 'a':
+            case 'A':
+                console.log('A不区分大小写');
+                break;
+            default:
+                console.log('未匹配');
+                // break;
+        }
+    </script>
+    <!-- 三元运算符 = 三目运算符 -->
+    <script>
+        // 相当于 if条件语句
+        var condition2 = false;
+        condition2 ? console.log(true) : console.log(false);
+
+        //赋值
+        var condition3 = true;
+        var newVal3 = condition3 ? '值3-1' : '值3-2';
+        console.log(newVal3);
     </script>
 </body>
 

@@ -10,19 +10,37 @@
 <body>
 
     <script>
-        function DayOfYear(day) {
-
+        function DayOfYear(date) {
+            var monthsDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            var result = 0;
+            if (date.year % 4 == 0) {
+                monthsDays[1] = 29;
+            }
+            if (date.month == 1) {
+                result = date.day;
+            } else {
+                for (var i = 0; i <= date.month - 2; i++) {
+                    result += monthsDays[i];
+                }
+                result += date.day;
+            }
+            return result;
         }
+
 
         var myDate = new Date();
+        var myYear = myDate.getFullYear();
+        var myMonth = myDate.getMonth();
+        var myDay = myDate.getDate();
+        console.log(myYear, myMonth, myDay);
 
-        var day = {
-            year: 2000,
-            month: 2,
-            day: 8,
+        var date = {
+            year: myYear,
+            month: myMonth,
+            day: myDay,
         }
-
-        function DayOfYear(day);
+        var z = DayOfYear(date);
+        console.log(z);
     </script>
 </body>
 

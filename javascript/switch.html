@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch</title>
+</head>
+
+<body>
+
+    <script>
+        var a = window.prompt();
+        var b = 3;
+        // case 要 同时 判断 类型和值
+        switch (a) {
+            case '5':
+                console.log('字符串:' + 5);
+        }
+
+
+        switch (parseInt(a)) {
+            case 5:
+                console.log('由字符串转化为数字:' + 5);
+        }
+
+        switch (parseInt(a)) {
+            case b + 2:
+                console.log('case之变量表达式:5');
+                5
+        }
+    </script>
+
+    <script>
+    </script>
+</body>
+
+</html>

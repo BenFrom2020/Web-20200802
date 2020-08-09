@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.3.8</title>
+</head>
+
+<body>
+
+    <script>
+        for (var i = 1000; i < 9999; i++) {
+            if (i % 13 == 0 && (Math.floor(i / 10) % 10 + Math.floor(i / 100) % 10 == Math.floor(i / 1000) % 10)) {
+                document.write(i + '<br>');
+            }
+        }
+    </script>
+</body>
+
+</html>

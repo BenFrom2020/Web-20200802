@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6.3.4</title>
+</head>
+
+<body>
+
+    <script>
+        function collectDigits(str) {
+            var newStr = '';
+            for (var i = 0; i < str.length; i++) {
+                var c = str.charAt(i);
+                if (c >= '0' && c <= '9') {
+                    newStr += c;
+                }
+            }
+            return newStr;
+        }
+
+        var myDigits = collectDigits('1abc23def4');
+        console.log(myDigits);
+    </script>
+</body>
+
+</html>

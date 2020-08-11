@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <ul id="menu">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+    </ul>
+
+    <ul id="menu2">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+    </ul>
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        console.log(oDiv1);
+
+        var oMenu = document.getElementById('menu');
+
+
+        // 取出所有li
+        // 返回HTMLCollection 类数组  唯一和数组相同的是  可以通过下标取出每一个元素
+        var aLi = document.getElementsByTagName('li');
+        console.log(aLi);
+
+        // 取出 #menu 下的 所有li
+        var aLi1 = oMenu.getElementsByTagName('li');
+        console.log(aLi1);
+    </script>
+</body>
+
+</html>

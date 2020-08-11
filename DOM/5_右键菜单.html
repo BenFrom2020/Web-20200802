@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5_右键菜单</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #menu {
+            /* margin-left: 30px; */
+            border: 1px solid #000000;
+            width: 120px;
+            display: none;
+            position: absolute;
+            background: #ffffff;
+        }
+        
+        #menu li {
+            width: 120px;
+            height: 30px;
+            list-style: none;
+            border-bottom: 1px dashed #cccccc;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        
+        #menu li:last-child {
+            border-bottom: none;
+        }
+        
+        #menu li:hover {
+            background: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+        <li>菜单5</li>
+    </ul>
+    <h1>h1</h1>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        document.oncontextmenu = function(ev) {
+            // 解决IE兼容问题
+            ev = ev || window.event;
+            oMenu.style.display = 'block';
+            // 获取鼠标当前位置
+            var x = ev.clientX;
+            var y = ev.clientY;
+            // 为右键菜单 定位
+            oMenu.style.left = x + 'px';
+            oMenu.style.top = y + 'px';
+
+            // 阻止弹出 默认菜单
+            return false;
+        };
+
+        document.onclick = function() {
+            oMenu.style.display = 'none';
+        };
+
+        // 为每一个li绑定 点击事件
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function(ev) {
+                // this 对于当前对象的引用
+                alert(this.innerHTML);
+            };
+        }
+    </script>
+</body>
+
+</html>

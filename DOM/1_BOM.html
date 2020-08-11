@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_BOM</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="div1">div1</div>
+    <a href="2_history.html">打开</a>
+    <script>
+        window.scrollTo(0, 100);
+    </script>
+    <!-- 定时器1 :循环-->
+    <script>
+        var n = 0;
+        // 定时器返回类型timer 是 number类型
+        var timer = setInterval(function() {
+            if (n >= 5) {
+                clearInterval(timer);
+            }
+            // console.log(n++);
+        }, 1000);
+    </script>
+    <!-- 定时器2 :延迟-->
+    <script>
+        var a = 1;
+        setTimeout(function() {
+            console.log(a++);
+        }, 1000);
+    </script>
+</body>
+
+</html>

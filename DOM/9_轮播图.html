@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9_轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            position: relative;
+            width: 480px;
+            height: 270px;
+            margin: 100px auto;
+        }
+        
+        #imgs img {
+            display: none;
+        }
+        
+        #imgs .selected {
+            display: block;
+        }
+        
+        #nav {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        #nav li,
+        #arrows span {
+            list-style: none;
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            color: white;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        
+        #nav .nav-selected {
+            background: orange;
+        }
+        
+        #arrows {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            /* background: white; */
+            /* cursor: pointer; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img class="selected" src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+        </div>
+        <ul id="nav">
+            <li class="nav-selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrows">
+            <span id="prev">&lt</span>
+            <span id="next">&gt</span>
+        </div>
+    </div>
+
+    <script>
+        var timer;
+        var oImgs = document.getElementById('imgs');
+        var aImg = oImgs.getElementsByTagName('img');
+
+
+        var oNav = document.getElementById('nav');
+        var aLi = oNav.getElementsByTagName('li');
+
+        var iNowIndex = 0;
+
+        for (var i = 0; i < aLi.length; i++) {
+            // 为每一个li设定一个索引属性，方便外部调用
+            aLi[i].index = i;
+            // 清除 默认 三连击 选中标签 行为
+            aLi[i].onselectstart = function() {
+                return false;
+            };
+
+            aLi[i].onmouseover = function() {
+                iNowIndex = this.index;
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                    aImg[i].className = '';
+                }
+                this.className += ' nav-selected';
+                aImg[this.index].className += ' selected';
+            };
+        }
+
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+
+        // 清除 默认 三连击 选中标签 行为
+        oPrev.onselectstart = oNext.onselectstart = function() {
+            return false;
+        };
+        oPrev.onclick = oNext.onclick = function() {
+            if (this === oPrev) {
+                iNowIndex--;
+                if (iNowIndex == -1) {
+                    iNowIndex = aLi.length - 1;
+                }
+            } else {
+                iNowIndex++;
+                if (iNowIndex == aLi.length) {
+                    iNowIndex = 0;
+                }
+            }
+            changeImg();
+        }
+
+        // 切换图片
+        function changeImg() {
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].className = '';
+                aImg[i].className = '';
+            }
+            aLi[iNowIndex].className = 'nav-selected';
+            aImg[iNowIndex].className = 'selected';
+        }
+
+        function play() {
+            timer = setInterval(function() {
+                oNext.onclick();
+            }, 1000);
+        };
+
+        play();
+
+        var oContainer = document.getElementById('container');
+        oContainer.onmouseover = function() {
+            clearInterval(timer);
+        };
+        oContainer.onmouseout = function() {
+            play();
+        };
+    </script>
+</body>
+
+</html>

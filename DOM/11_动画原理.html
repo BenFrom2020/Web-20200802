@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_动画原理</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* transition: all 3s ease; */
+            position: relative;
+        }
+        
+        .move {
+            /* transform: translateX(500px); */
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">move</button>
+    <div id="box">div</div>
+
+    <script>
+        var oBtn = document.getElementById('btn');
+        var oBox = document.getElementById('box');
+        // var left = 0;
+
+        oBtn.onclick = function() {
+            // 利用css3 做移动效果
+            // oBox.className = 'move';
+            var timer = setInterval(function() {
+                // left += 20;
+                if (oBox.offsetLeft >= 500) {
+                    clearInterval(timer);
+                }
+                oBox.style.left = oBox.offsetLeft + 20 + 'px';
+            }, 30);
+
+        };
+    </script>
+</body>
+
+</html>

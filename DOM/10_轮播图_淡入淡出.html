@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_轮播图_淡入淡出</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        #container {
+            width: 480px;
+            height: 270px;
+            position: relative;
+            margin: 100px auto;
+        }
+        
+        #imgs {
+            position: relative;
+        }
+        
+        #imgs div {
+            position: absolute;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        #imgs .banner1 {}
+        
+        #imgs .banner2 {}
+        
+        #imgs .banner3 {}
+        
+        #imgs .active {
+            opacity: 1;
+        }
+        
+        #nav {
+            position: absolute;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            z-index: 999;
+        }
+        
+        #nav li {
+            float: left;
+            width: 25px;
+            height: 5px;
+            background: #ffffff;
+            opacity: .3;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        #nav .selected {
+            background: #ffffff;
+            opacity: .6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="imgs">
+            <div class="banner1 active">
+                <img src="img/1.jpg" alt="">
+            </div>
+            <div class="banner2">
+                <img src="img/2.jpg" alt="">
+            </div>
+            <div class="banner3">
+                <img src="img/3.jpg" alt="">
+            </div>
+        </div>
+
+        <ul id="nav">
+            <li class="selected"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        var oImgs = document.getElementById('imgs');
+        var aDiv = oImgs.getElementsByTagName('div');
+
+        var oNav = document.getElementById('nav');
+        var aLi = oNav.getElementsByTagName('li');
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+
+            aLi[i].onmouseover = function() {
+                for (var j = 0; j < aLi.length; j++) {
+                    aLi[j].className = '';
+                    aDiv[j].className = '';
+                }
+                this.className = 'selected';
+                aDiv[this.index].className = 'active';
+            };
+        }
+    </script>
+</body>
+
+</html>

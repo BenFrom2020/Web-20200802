@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_定时器</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+
+    <script>
+        // 异步的   先挂起，等待之后任务执行完毕 以及 定时器到时  再执行 内部程序
+        setTimeout(function() {
+            console.log(1);
+        }, 3000);
+        console.log(2);
+        console.log(3);
+    </script>
+</body>
+
+</html>

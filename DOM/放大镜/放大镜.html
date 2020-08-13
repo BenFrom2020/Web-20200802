@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            position: relative;
+        }
+        
+        #small,
+        #big {
+            width: 400px;
+            height: 400px;
+            float: left;
+            position: relative;
+        }
+        
+        #big {
+            overflow: hidden;
+            display: none;
+        }
+        
+        #small #drag {
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="small">
+            <img src="img/mg-small.jpg" alt="">
+            <div id="drag"></div>
+        </div>
+        <div id="big">
+            <img src="img/5624.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var oSmall = document.getElementById('small');
+        var oDrag = document.getElementById('drag');
+        var oBig = document.getElementById('big');
+
+        oSmall.onmouseover = function(ev) {
+            oDrag.style.display = 'block';
+            oBig.style.display = 'block';
+        };
+
+        oSmall.onmouseout = function() {
+            oDrag.style.display = 'none';
+            oBig.style.display = 'none';
+        };
+
+        oSmall.onmousemove = function(ev) {
+            ev = ev || window.event;
+            var top = ev.clientY - oDrag.offsetHeight / 2;
+            var topMax = oSmall.offsetHeight - oDrag.offsetHeight;
+            var left = ev.clientX - oDrag.offsetWidth / 2;
+            var leftMax = oSmall.offsetWidth - oDrag.offsetWidth;
+
+            if (top < 0) {
+                top = 0
+            }
+
+            if (top > topMax) {
+                top = topMax;
+            }
+            if (left < 0) {
+                left = 0;
+            }
+            if (left > leftMax) {
+                left = leftMax;
+            }
+            oDrag.style.top = top + 'px';
+            oDrag.style.left = left + 'px';
+        };
+    </script>
+</body>
+
+</html>

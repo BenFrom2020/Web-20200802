@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_offset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            padding: 10px;
+            border: 2px solid;
+            margin: 15px;
+        }
+        
+        #div2 {
+            width: 300px;
+            height: 300px;
+            background: #00ff00;
+            /* margin-left: 10px; */
+            position: absolute;
+            top: 100px;
+            left: 600px;
+        }
+        
+        #div2-1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* margin-left: 20px; */
+        }
+        
+        #div3 {
+            width: 400px;
+            height: 400px;
+            background: #ff0000;
+            position: absolute;
+            top: 300px;
+            left: 100px;
+        }
+        
+        #div3-1 {
+            width: 300px;
+            height: 300px;
+            background: #00ff00;
+            margin-left: 20px;
+        }
+        
+        #div3-1-1 {
+            width: 200px;
+            height: 200px;
+            background: #0000ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <div id="div2">
+        <div id="div2-1"></div>
+    </div>
+
+    <div id="div3">
+        <div id="div3-1">
+            <div id="div3-1-1"></div>
+        </div>
+    </div>
+
+    <!-- offset只能取值 -->
+    <!-- .style.width 只能取到内联样式的值 -->
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        // offsetWidth 包括 内容+padding+border   不包括margin
+        console.log(oDiv1.offsetWidth);
+        // offsetHeight 包括 内容+padding+border   不包括margin
+        console.log(oDiv1.offsetHeight);
+        // offsetLeft
+        console.log(oDiv1.offsetLeft);
+        // offsetTop
+        console.log(oDiv1.offsetTop);
+        // offsetParent
+        console.log(oDiv1.offsetParent);
+    </script>
+
+    <script>
+        var oDiv2_1 = document.getElementById('div2-1');
+        // offsetWidth 包括 内容+padding+border   不包括margin
+        console.log(oDiv2_1.offsetWidth);
+        // offsetHeight 包括 内容+padding+border   不包括margin
+        console.log(oDiv2_1.offsetHeight);
+        // offsetLeft
+        console.log(oDiv2_1.offsetLeft);
+        // offsetTop
+        console.log(oDiv2_1.offsetTop);
+        // offsetParent
+        console.log(oDiv2_1.offsetParent);
+    </script>
+
+
+    <script>
+        var oDiv3_1_1 = document.getElementById('div3-1-1');
+        // offsetWidth 包括 内容+padding+border   不包括margin
+        console.log(oDiv3_1_1.offsetWidth);
+        // offsetHeight 包括 内容+padding+border   不包括margin
+        console.log(oDiv3_1_1.offsetHeight);
+        // offsetLeft
+        console.log(oDiv3_1_1.offsetLeft);
+        // offsetTop
+        console.log(oDiv3_1_1.offsetTop);
+        // offsetParent
+        console.log(oDiv3_1_1.offsetParent);
+    </script>
+</body>
+
+</html>

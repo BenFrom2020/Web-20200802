@@ -29,14 +29,18 @@
         }
         
         #small #drag {
-            width: 200px;
-            height: 200px;
+            width: 133px;
+            height: 133px;
             background: #ffffff;
             opacity: .5;
             position: absolute;
             top: 0;
             left: 0;
             display: none;
+        }
+        
+        #big-img {
+            position: absolute;
         }
     </style>
 </head>
@@ -49,7 +53,7 @@
             <div id="drag"></div>
         </div>
         <div id="big">
-            <img src="img/5624.jpg" alt="">
+            <img src="img/5624.jpg" alt="" id="big-img">
         </div>
     </div>
 
@@ -57,6 +61,7 @@
         var oSmall = document.getElementById('small');
         var oDrag = document.getElementById('drag');
         var oBig = document.getElementById('big');
+        var oBigImg = document.getElementById('big-img');
 
         oSmall.onmouseover = function(ev) {
             oDrag.style.display = 'block';
@@ -70,10 +75,19 @@
 
         oSmall.onmousemove = function(ev) {
             ev = ev || window.event;
+            // 判断drag位置的边界
             var top = ev.clientY - oDrag.offsetHeight / 2;
             var topMax = oSmall.offsetHeight - oDrag.offsetHeight;
             var left = ev.clientX - oDrag.offsetWidth / 2;
             var leftMax = oSmall.offsetWidth - oDrag.offsetWidth;
+
+            if (left < 0) {
+                left = 0;
+            }
+
+            if (left > leftMax) {
+                left = leftMax;
+            }
 
             if (top < 0) {
                 top = 0
@@ -82,14 +96,19 @@
             if (top > topMax) {
                 top = topMax;
             }
-            if (left < 0) {
-                left = 0;
-            }
-            if (left > leftMax) {
-                left = leftMax;
-            }
-            oDrag.style.top = top + 'px';
+
+            // 设置drag的位置
             oDrag.style.left = left + 'px';
+            oDrag.style.top = top + 'px';
+
+
+            // drag移动的百分比
+            var dragPX = oDrag.offsetLeft / leftMax;
+            var dragPY = oDrag.offsetTop / topMax
+
+            // 设置大图片的位置
+            oBigImg.style.left = -dragPX * (oBigImg.offsetWidth - oBig.offsetWidth) + 'px';
+            oBigImg.style.top = -dragPY * (oBigImg.offsetHeight - oBig.offsetHeight) + 'px';
         };
     </script>
 </body>

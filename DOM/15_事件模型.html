@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15_事件模型</title>
+    <style>
+        #div1 {
+            width: 300px;
+            height: 300px;
+            background: #ff0000;
+        }
+        
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+        
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background: #0000ff;
+        }
+        
+        #div4 {
+            width: 300px;
+            height: 300px;
+            background: #ff0000;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+        }
+        
+        #div5 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+        
+        #div6 {
+            width: 100px;
+            height: 100px;
+            background: #0000ff;
+        }
+        
+        #div7 {
+            width: 300px;
+            height: 300px;
+            background: #ff0000;
+            position: absolute;
+            left: 800px;
+            top: 200px;
+        }
+        
+        #div8 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+        
+        #div9 {
+            width: 100px;
+            height: 100px;
+            background: #0000ff;
+        }
+        
+        #div10 {
+            width: 300px;
+            height: 300px;
+            background: #ff0000;
+            position: absolute;
+            left: 200px;
+            top: 500px;
+        }
+        
+        #div11 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+        
+        #div12 {
+            width: 100px;
+            height: 100px;
+            background: #0000ff;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <div id="div1">
+        <div id="div2">
+            <div id="div3">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="div4">
+        <div id="div5">
+            <div id="div6">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="div7">
+        <div id="div8">
+            <div id="div9">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="div10">
+        <div id="div11">
+            <div id="div12">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 先捕获后冒泡 -->
+    <!-- 事件捕获：从外向里 -->
+    <!-- 事件冒泡：从里向外 -->
+    <!-- 事件冒泡 -->
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        var oDiv3 = document.getElementById('div3');
+        var oBody = document.getElementById('body');
+        var oHtml = document.getElementById('html');
+
+        //  .onclick 绑定监听方式  会被为同一个绑定监听的函数 覆盖掉 
+        oDiv1.onclick = function() {
+            console.log('div1-1');
+        };
+        oDiv1.onclick = function() {
+            console.log('div1-2');
+        };
+
+        oDiv2.onclick = function() {
+            console.log('div2');
+        };
+
+        oDiv3.onclick = function() {
+            console.log('div3');
+        };
+
+        oBody.onclick = function() {
+            console.log('body');
+        };
+
+        oHtml.onclick = function() {
+            console.log('html');
+        };
+    </script>
+
+    <!-- false 为默认  为 冒泡 -->
+    <script>
+        var oDiv4 = document.getElementById('div4');
+        var oDiv5 = document.getElementById('div5');
+        var oDiv6 = document.getElementById('div6');
+
+        // addEventListener 为同一个元素加监听不会被覆盖
+        oDiv4.addEventListener('click', function() {
+            console.log('div4-1');
+        }, false);
+        oDiv4.addEventListener('click', function() {
+            console.log('div4-2');
+        }, false);
+
+        oDiv5.addEventListener('click', function() {
+            console.log('div5');
+        }, false);
+
+        oDiv6.addEventListener('click', function() {
+            console.log('div6');
+        }, false);
+
+        oBody.addEventListener('click', function() {
+            console.log('body');
+        }, false);
+
+        oHtml.addEventListener('click', function() {
+            console.log('html');
+        }, false);
+    </script>
+
+
+    <!-- true 为 捕获 -->
+    <script>
+        var oDiv7 = document.getElementById('div7');
+        var oDiv8 = document.getElementById('div8');
+        var oDiv9 = document.getElementById('div9');
+
+        // addEventListener 为同一个元素加监听不会被覆盖
+        oDiv7.addEventListener('click', function() {
+            console.log('div7');
+        }, true);
+
+        oDiv8.addEventListener('click', function() {
+            console.log('div8');
+        }, true);
+
+        oDiv8.addEventListener('click', function() {
+            console.log('div8');
+        }, false);
+
+        oDiv9.addEventListener('click', function() {
+            console.log('div9');
+        }, true);
+
+        oBody.addEventListener('click', function() {
+            console.log('body');
+        }, true);
+
+        oHtml.addEventListener('click', function() {
+            console.log('html');
+        }, true);
+    </script>
+
+    <!-- 阻止事件冒泡 -->
+    <script>
+        var oDiv10 = document.getElementById('div10');
+        var oDiv11 = document.getElementById('div11');
+        var oDiv12 = document.getElementById('div12');
+        oDiv10.addEventListener('click', function() {
+            console.log('div10');
+        }, true);
+        oDiv11.addEventListener('click', function(ev) {
+            console.log('div11');
+            ev.stopPropagation();
+        }, true);
+
+        oDiv12.addEventListener('click', function() {
+            console.log('div12');
+        }, true);
+    </script>
+</body>
+
+</html>

@@ -283,6 +283,8 @@
         // IE attchEvent this值为window
         // oDiv13.attachEvent('onclick', function() {
         //     alert(this);
+        // IE 取消事件冒泡
+        window.event.cancelBubble = true;
         // });
     </script>
 </body>

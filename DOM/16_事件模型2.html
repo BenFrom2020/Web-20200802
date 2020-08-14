@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16_事件模型2</title>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+        <li>006</li>
+        <li>007</li>
+        <li>008</li>
+        <li>009</li>
+        <li>010</li>
+    </ul>
+
+    <ul id="ul2">
+        <li>021</li>
+        <li>022</li>
+        <li>023</li>
+        <li>024</li>
+        <li>025</li>
+        <li>026</li>
+        <li>027</li>
+        <li>028</li>
+        <li>029</li>
+        <li>030</li>
+    </ul>
+    <!-- 绑定多次：低性能：为所有li绑定 点击监听事件 -->
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        var aLi = oUl1.getElementsByTagName('li');
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function() {
+                console.log(this.innerHTML);
+            };
+        }
+    </script>
+
+    <!-- 只绑定一次：高性能：事件委托/事件代理   把子元素的事件 委托给 父元素-->
+    <script>
+        var oUl2 = document.getElementById('ul2');
+        oUl2.onclick = function(ev) {
+            console.log(ev.target.innerHTML);
+        };
+    </script>
+
+
+    <!-- 事件源 -->
+    <script>
+        // 标准浏览器   e.target
+        // 早期IE       window.event.srcElement
+    </script>
+</body>
+
+</html>

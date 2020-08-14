@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17_事件模型3</title>
+</head>
+
+<body>
+    <button id="add">添加</button>
+    <ul id="ul1">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+
+
+    <button id="add2">添加</button>
+    <ul id="ul2">
+        <li>021</li>
+        <li>022</li>
+        <li>023</li>
+        <li>024</li>
+        <li>025</li>
+    </ul>
+
+    <!-- 绑定多次：低性能：为所有li绑定 点击监听事件 -->
+    <!-- bug：如果新增li    无法为其绑定监听 -->
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        var aLi = oUl1.getElementsByTagName('li');
+        var oAdd = document.getElementById('add');
+
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].onclick = function() {
+                console.log(this.innerHTML);
+            };
+        }
+
+        oAdd.onclick = function() {
+            var li = document.createElement('li');
+            li.innerHTML = Math.random();
+            oUl1.appendChild(li);
+        };
+    </script>
+
+    <!-- 只绑定一次：高性能：事件委托/事件代理   把子元素的事件 委托给 父元素-->
+    <script>
+        var oUl2 = document.getElementById('ul2');
+        var oAdd2 = document.getElementById('add2');
+        oUl2.onclick = function(e) {
+            console.log(e.target.innerHTML);
+        };
+        oAdd2.onclick = function() {
+            var li = document.createElement('li');
+            li.innerHTML = Math.random();
+            oUl2.appendChild(li);
+        };
+    </script>
+</body>
+
+</html>

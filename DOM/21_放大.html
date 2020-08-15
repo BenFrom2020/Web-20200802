@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21_放大</title>
+    <style>
+        .div {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+
+    <script>
+        var oDivs = document.querySelectorAll('.div');
+
+        for (var i = 0; i < oDivs.length; i++) {
+            oDivs[i].addEventListener('mouseover', function() {
+                var that = this;
+                clearInterval(this.timer);
+                this.timer = setInterval(function() {
+                    if (that.offsetWidth >= 800) {
+                        clearInterval(that.timer);
+                    }
+                    that.style.width = that.offsetWidth + 10 + 'px';
+                }, 50);
+            });
+
+            oDivs[i].addEventListener('mouseout', function() {
+                var that = this;
+                clearInterval(this.timer);
+                this.timer = setInterval(function() {
+                    if (that.offsetWidth <= 100) {
+                        clearInterval(that.timer);
+                    }
+                    that.style.width = that.offsetWidth - 10 + 'px';
+                }, 50);
+            });
+        }
+    </script>
+</body>
+
+</html>

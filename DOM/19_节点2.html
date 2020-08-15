@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19_节点2</title>
+</head>
+
+<body>
+    <div id="container">
+        <!-- 这是一行注释 -->
+        <h1 id="h1">hello</h1>
+        <p>world</p>
+    </div>
+
+
+    <script>
+        var oContainer = document.querySelector('#container');
+        console.log(oContainer.childNodes);
+        console.log('firstChild---');
+        console.log(oContainer.firstChild);
+        // IE不支持
+        console.log('firstElementChild---');
+        console.log(oContainer.firstElementChild);
+
+
+
+        var oH1 = document.getElementById('h1');
+        console.log('nextSibling---');
+        console.log(oH1.nextSibling);
+        // IE不支持
+        console.log('nextElementSibling---');
+        console.log(oH1.nextElementSibling);
+    </script>
+
+
+    <script>
+        var child = oContainer.childNodes;
+
+        for (var i = 0; i < child.length; i++) {
+            // console.log(child[i].nodeType);
+            if (child[i].nodeType) {
+                // return child[i];
+            }
+        }
+
+        console.log(next(oH1));
+        // 找到兄弟元素
+        function next(elem) {
+            do {
+                elem = elem.nextSibling;
+            } while (elem && elem.nodeType != 1);
+            return elem;
+        }
+
+        console.log(first(oContainer));
+        // 找到第一个元素节点的孩子
+        function first(elem) {
+            elem = elem.firstChild;
+            if (elem == null) {
+                return null;
+            }
+            return elem.nodeType == 1 ? elem : next(elem);
+        };
+    </script>
+
+</body>
+
+</html>

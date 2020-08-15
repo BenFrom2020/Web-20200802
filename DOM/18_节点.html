@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18_节点</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1 id="h1">h1</h1>
+    <h1 id="h2">h2</h1>
+    <ul id="menu">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+        <li>菜单4</li>
+        <li>菜单5</li>
+    </ul>
+
+    <ul id="menu1">
+        <li>菜单1</li>
+        <li class="item">菜单2</li>
+        <li>菜单3</li>
+        <li class="item">菜单4</li>
+        <li>菜单5</li>
+    </ul>
+
+
+    <ul id="menu2">
+        <li>菜单1</li>
+        <li class="item2">菜单2</li>
+        <li class="item3">菜单3</li>
+        <li class="item2">菜单4</li>
+        <li class="remove">菜单5</li>
+    </ul>
+
+    <form action="">
+        <label for="username">用户名</label>
+        <input type="text" id="username" name="uname">
+        <br> 性别:
+        <input type="radio" name="sex">男
+        <input type="radio" name="sex">女
+        <br> 爱好:
+        <input type="checkbox" name="hobby">足球
+        <input type="checkbox" name="hobby">篮球
+        <input type="checkbox" name="hobby">排球
+        <input type="submit">
+    </form>
+
+    <script>
+        var oH1 = document.getElementById('h1');
+        console.log(oH1);
+
+        var oMenu = document.getElementById('menu');
+        // 返回值   HTMLCollection
+        var aLi = oMenu.getElementsByTagName('li');
+        console.log(aLi);
+
+        var oMenu1 = document.getElementById('menu1');
+        // 返回值   HTMLCollection      早起IE不支持
+        var aLiClassItem = oMenu1.getElementsByClassName('item');
+        console.log(aLiClassItem);
+    </script>
+
+    <!-- 封装方法 -->
+    <!-- 解决IE兼容问题 getElementsByClassName -->
+    <script>
+        function getByClass(clsName) {
+            // document.getElementsByClassName  查看document是否有getElementsByClassName    方法
+            // document.getElementsByClassName()  调用document下getElementsByClassName方法
+
+            if (!document.getElementsByClassName) {
+                return document.getElementsByClassName(clsName);
+            } else {
+                var allElems = document.getElementsByTagName('*');
+                var result = [];
+                for (var i = 0; i < allElems.length; i++) {
+
+                    // 匹配不完整 应该使用正则表达式
+                    if (allElems[i].className.indexOf(clsName) != -1) {
+                        result.push(allElems[i]);
+                    }
+                }
+                console.log(result);
+                return result;
+            }
+        };
+
+        getByClass('item');
+    </script>
+
+    <!-- 节点列表NodeList -->
+    <script>
+        var uname = document.getElementsByName('uname');
+        console.log(uname);
+
+
+        var sex = document.getElementsByName('sex');
+        console.log(sex);
+
+        var hobby = document.getElementsByName('hobby');
+        console.log(hobby);
+    </script>
+
+
+    <!--querySelector  结合 css3选择器 -->
+    <script>
+        // 选择单个元素     多个对象的情况 只返回第一个元素
+        var oH2 = document.querySelector('#h2');
+        console.log(oH2);
+
+        // NodeList
+        var oItems2 = document.querySelectorAll('#menu2 .item2');
+        console.log(oItems2);
+
+        // 获取 #menu 的第一个li元素
+        var oItemFirst = document.querySelector('#menu2 li:first-child');
+        console.log(oItemFirst);
+
+        // 获取顺序为“偶数”的元素
+        var oItem2n = document.querySelectorAll('#menu2 li:nth-child(2n)');
+        console.log(oItem2n);
+    </script>
+
+    <script>
+        // 创建元素
+        var oMenu2 = document.querySelector('#menu2');
+        var oLi = document.createElement('li');
+        oLi.innerHTML = Math.random();
+        // 插入元素
+        oMenu2.appendChild(oLi);
+
+        var oLi1 = document.createElement('li');
+        oLi1.innerHTML = Math.random();
+        var oItem3 = document.querySelectorAll('.item3')[0];
+        // 插入元素
+        oMenu2.insertBefore(oLi1, oItem3);
+
+        var oLi2 = document.createElement('li');
+        oLi2.innerHTML = Math.random();
+        // 替换元素
+        oMenu2.replaceChild(oLi2, oItem3);
+
+        var oRemove = document.querySelector('#menu2 .remove');
+        // 删除元素
+        oMenu2.removeChild(oRemove);
+    </script>
+</body>
+
+</html>

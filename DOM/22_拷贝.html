@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+    <title>22_拷贝</title>
+</head>
+
+
+<script>
+    // 栈内存   变量
+    var a = 5;
+    var b = a;
+    a = 6;
+    console.log(b);
+
+
+    // 堆内存   引用
+    var obj1 = {
+        name: 'zhangsan',
+        age: 18,
+        dad: {
+            name: 'zhanger',
+            age: 40,
+            dad: {
+                name: 'zhangyi',
+                age: 70,
+
+            },
+        }
+    };
+
+    // 浅拷贝   obj2 与 obj1指向 堆内存中的同一块
+    // obj1 与 obj2 只是名字不同
+    var obj2 = obj1;
+    obj1.age = 12;
+    console.log(obj2.age);
+
+    // 深拷贝   创建新的内存
+    var obj3 = {}; // new Object();
+    obj3.name = obj1.name;
+    obj3.age = obj1.age;
+    obj1.age = 5;
+    console.log(obj3.age);
+</script>
+
+<!-- 封装深度拷贝  -->
+<script>
+    function clone(obj) {
+        var newObject = {};
+        for (var p in obj) {
+            if (typeof obj[p] === 'object') {
+                newObject[p] = clone(obj[p]);
+            } else {
+                newObject[p] = obj[p];
+            }
+        }
+        return newObject;
+    };
+
+    var obj4 = clone(obj1);
+    obj1.dad.dad.age = 100;
+    console.log(obj4.dad.dad.age);
+</script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_jq对象</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">div1</div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        // jq对象
+        $('#div1').css('background', '#ff0000');
+        console.log($('#div1'));
+
+        // jq命名  建议$开头
+        var $div1 = $('#div1');
+
+        // jq对象-> 原生对象
+        // $obj.get(0)    或  $obj[0]
+        console.log($('#div1').get(0).innerHTML);
+
+        // 原生对象->jq对象 $(obj)
+        var oDiv1 = document.getElementById('div1');
+        $(oDiv1).css('background', '#0000ff');
+    </script>
+</body>
+
+</html>

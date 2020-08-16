@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23_类</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+        js 基于面向对象
+        类:相同属性和方法的对象的集合
+        对象
+    -->
+    <script>
+        // 属性写在构造函数里   
+        // 方法写在原型里   也可以在构造函数里定义，但是定义在原型里 效率更高，否则每次实例化对象 都会调用执行一次 方法
+        // 用function建立 类   建议名字大写
+        function People(name, age, school) {
+            this.name = name;
+            this.age = age;
+            this.school = school;
+        };
+
+        // 为类 定义方法
+        People.prototype.showName = function() {
+            alert(this.name);
+        };
+
+        People.prototype.showSchool = function() {
+            alert(this.school);
+        }
+
+        // 实例化对象
+        var p1 = new People('zhangsan', 18, 'shaya');
+        console.log(p1);
+
+        // 调用类 下prototype下的方法
+        p1.showName();
+        p1.showSchool();
+
+        // 原型链   调用类下方法的次序
+        // 先遍历构造函数里找
+        // 再去原型里面找
+        // 再去父类里找
+    </script>
+</body>
+
+</html>

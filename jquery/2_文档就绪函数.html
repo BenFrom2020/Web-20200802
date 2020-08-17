@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_文档就绪函数.html</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">div1</div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        // jq对象
+        $('#div1').css('background', '#ff0000');
+        console.log($('#div1'));
+    </script>
+
+    <!-- 文档就绪函数 -->
+    <!-- 
+        与window.onload区别
+        等到dom执行完成 而 window.onload是等全部执行加载完毕
+     -->
+    <script>
+        // 标准写法
+        $(document).ready(function() {
+            console.log($('#div1'));
+        });
+
+        // 建议写法
+        $(function() {
+            console.log($('#div1'));
+        });
+    </script>
+</body>
+
+</html>

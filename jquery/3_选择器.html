@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3_选择器</title>
+    <style>
+        .mydiv {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" class="mydiv"></div>
+    <div class="mydiv"></div>
+    <div class="mydiv"></div>
+
+    <ul id="ul1">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+        <li>22</li>
+    </ul>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            // 用$或者jQuery 都一样
+            console.log($('#div1'));
+            console.log(jQuery('#div1'));
+        });
+    </script>
+
+    <!-- 通过jQuery 给class赋值 -->
+    <script>
+        $('.mydiv').css('background', '#0000ff');
+
+        // 根据集合索引 定位元素    eq等于
+        $('#ul1 li:eq(-1)').css('background', '#00ff00');
+
+        // 偶数 0-2-4
+        $('#ul1 li:even').css('background', '#00ff00');
+        // 奇数 1-3-5
+        $('#ul1 li:odd').css('background', '#0000ff');
+        // 大于
+        $('#ul1 li:gt(2)').css('background', '#00ffff');
+        // 小于
+        $('#ul1 li:lt(1)').css('background', '#ffff00');
+        // not 非
+
+        // 包含
+        $('#ul1 li:contains(2)').css('background', '#0044ff');
+        // 包含 +变量
+        var a = 3;
+        $('#ul1 li:contains(' + a + ')').css('background', '#aa44ff');
+    </script>
+</body>
+
+</html>

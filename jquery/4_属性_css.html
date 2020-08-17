@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .aa {
+            background: #ff0000;
+        }
+        
+        #div5 {
+            background: #ff0000;
+        }
+        
+        #div7 {
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 3px solid;
+            margin: 8px;
+            position: relative;
+        }
+        
+        #div8 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            top: 100px;
+            left: 100px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+    <div id="div4">div4</div>
+    <div id="div5">div5</div>
+    <div id="div6">div6</div>
+    <div id="div7">div7
+        <div id="div8">div8</div>
+    </div>
+
+    <input type="text" value="张三" id="username">
+
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.id = 'xx';
+        // 在element代码里 看不到自定义xx属性
+        oDiv1.xx = 'yy';
+        console.log('oDiv1.xx---' + oDiv1.xx);
+
+
+        oDiv1.setAttribute('xx', 'zz');
+        console.log('oDiv1.setAttribute---' + oDiv1.getAttribute('xx'));
+
+        console.log('oDiv1.xx---' + oDiv1.xx);
+    </script>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+
+            // 相当于 object.xx
+            // 在element代码里 看不到自定义xx属性
+            $('#div2').prop('xx', 'yy'); // 2个参数是赋值
+            console.log($('#div2').prop('xx')); // 1个参数是取值
+
+            // 相当于 object.setAttribute
+            // 在element代码里可以看到自定义xx属性
+            $('#div2').attr('xx', 'zz'); // 2个参数是赋值
+            console.log($('#div2').attr('xx')); // 1个参数是取值
+
+            console.log($('#username').val());
+
+
+            $('#div2').on('click', function() {
+                $(this).addClass('aa');
+            });
+
+            // 切换class    开关    取反
+            $('#div3').on('click', function() {
+                $(this).toggleClass('aa');
+            });
+
+            // 利用对象 修改css属性
+            $('#div4').on('click', function() {
+                $(this).css({
+                    // 属性background-color 改为驼峰式
+                    backgroundColor: '#ff0000',
+                    color: '#00ff00',
+                    // 属性font-size加单引号''
+                    'font-size': 50,
+                });
+            });
+
+            // 经过计算得到的属性值
+            $('#div5').on('click', function() {
+                $(this).css('width', function() {
+                    var newWidth = 200;
+                    return newWidth;
+                });
+
+                // 只有一个参数 为获取
+                console.log($(this).css('color'));
+            });
+
+            // 链式操作
+            $('#div5').on('click', function() {
+                // $(this).css('background', '#ff0000')执行完成后  返回$(this) 所以可以继续调用 .attr
+                $(this).css('background', '#ff0000').attr('aa', 'bb');
+            });
+
+            // 内容
+            console.log('width=' + $('#div7').width());
+            // 内容+padding
+            console.log('innerWidth=' + $('#div7').innerWidth());
+            // 内容+padding+border
+            console.log('outerWidth=' + $('#div7').outerWidth());
+            // 内容+padding+border+margin
+            console.log('outerWidth(true)=' + $('#div7').outerWidth(true));
+
+            // 相对文档位置
+            console.log($('#div8').offset());
+            // 相对父元素位置
+            console.log($('#div8').position());
+
+        });
+    </script>
+</body>
+
+</html>

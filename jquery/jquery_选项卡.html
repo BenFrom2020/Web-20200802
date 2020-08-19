@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_选项卡</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #container {
+            width: 400px;
+            height: 300px;
+            border: 1px solid;
+            margin: 100px auto;
+        }
+        
+        #menu {
+            list-style: none;
+            /* 为防止元素塌陷  使用.clearfix */
+            border-bottom: 1px solid;
+        }
+        
+        #menu li {
+            width: 120px;
+            height: 30px;
+            background: #cccccc;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        
+        .item {}
+        /* 防止元素塌陷 常用方法 */
+        
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        #menu .menu-selected {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        #content div {
+            display: none;
+        }
+        
+        #content .content-selected {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul id="menu" class="clearfix">
+            <li class="menu-selected">html</li>
+            <li>css</li>
+            <li>javascript</li>
+        </ul>
+        <div id="content">
+            <div class="content-selected">001</div>
+            <div>002</div>
+            <div>003</div>
+        </div>
+    </div>
+
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#menu li').on('click', function() {
+                $(this).addClass('menu-selected').siblings().removeClass('menu-selected');
+                $('#content div').eq($(this).index()).addClass('content-selected').siblings().removeClass('content-selected');
+            });
+        });
+    </script>
+</body>
+
+</html>

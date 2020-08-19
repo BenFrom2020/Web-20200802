@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5_全选</title>
+    <script>
+    </script>
+</head>
+
+
+<body>
+    <h2>你爱好的运动是?</h2>
+    <input type="checkbox" name="hobby">足球
+    <input type="checkbox" name="hobby">篮球
+    <input type="checkbox" name="hobby" checked>羽毛球
+    <input type="checkbox" name="hobby">乒乓球
+
+    <button id="all">全选</button>
+    <button id="no">全不选</button>
+    <button id="reverse">反选</button>
+
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            // 早期写法
+            // $('#all').click(function() {
+
+            // 现在写法
+            $('#all').on('click', function() {
+                // 可能存在兼容问题
+                // $('input[name="hobby"]').attr('checked', 'checked');
+
+                $('input[name="hobby"]').prop('checked', true);
+            });
+
+            $('#no').on('click', function() {
+                // 可能存在兼容问题
+                // $('input[name="hobby"]').removeAttr('checked');
+
+                $('input[name="hobby"]').prop('checked', false);
+            });
+
+            $('#reverse').on('click', function() {
+                $('input[name="hobby"]').each(function(index, elem) {
+                    // if ($(elem).prop('checked')) {
+                    //     $(elem).prop('checked', false);
+                    // } else {
+                    //     $(elem).prop('checked', true);
+                    // }
+
+                    // 简化代码     原生代码 更简单
+                    this.checked = !this.checked;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

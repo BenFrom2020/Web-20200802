@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6_过滤</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入手机型号" id="search">
+    <ul id="list">
+        <li>iphone8</li>
+        <li>iphoneX</li>
+        <li>xiaomi</li>
+        <li>huawei</li>
+    </ul>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#search').on('keyup', function() {
+                // this.value 原生的 更简单 更快    没必要用jquery  $(this.value).val()
+                $('#list li').css('background', 'transparent');
+                if (this.value != '') {
+                    $('#list li:contains(' + this.value + ')').css('background', '#ff0000');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8_可见</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+            /* 第一种   不显示  元素消失*/
+            /* display: none; */
+            /* 第二种   不显示  元素还在 可以触发点击事件*/
+            /* opacity: 0; */
+            /* 第三种   不显示  元素还在 但不能触发点击事件*/
+            /* visibility: hidden; */
+        }
+        
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <script>
+        var oDiv1 = document.getElementById('div1');
+        oDiv1.addEventListener('click', function() {
+            console.log(123);
+        });
+    </script>
+</body>
+
+</html>

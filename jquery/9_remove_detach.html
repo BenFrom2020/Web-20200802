@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9_remove_detach</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+        
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="remove">remove</button>
+    <button id="add-remove">add-remove</button>
+    <div id="div1">remove</div>
+
+    <button id="detach">detach</button>
+    <button id="add-detach">add-detach</button>
+    <div id="div2">detach</div>
+
+
+    <script src="jquery-3.5.1.js"></script>
+    <!-- remove 删除元素 以及信息和事件 -->
+    <!-- detach 删除元素 保留事件 -->
+    <script>
+        $(function() {
+            var $div1 = $('#div1');
+            $div1.on('click', function() {
+                console.log('div1');
+            });
+
+            $('#remove').on('click', function() {
+                $div1.remove();
+            });
+
+            $('#add-remove').on('click', function() {
+                $div1.insertAfter('#add-remove');
+            });
+
+
+
+            var $div2 = $('#div2');
+            $div2.on('click', function() {
+                console.log('div2');
+            });
+
+            $('#detach').on('click', function() {
+                $div2.detach();
+            });
+
+            $('#add-detach').on('click', function() {
+                $div2.insertAfter('#add-detach');
+            });
+        });
+    </script>
+</body>
+
+</html>

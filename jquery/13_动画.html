@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13_动画</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="animated">animated</button>
+    <div id="div1"></div>
+
+
+    <script src="jquery-3.5.1.js"></script>
+    <script src="jquery.easing.js"></script>
+    <script>
+        $(function() {
+            $('#animated').on('click', function() {
+                $('#div1').animate({
+                    // 只能操作数值
+                    width: 300,
+                    height: 300,
+                }, 2000, 'easeInBounce', function() {
+                    console.log('动画执行完成');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

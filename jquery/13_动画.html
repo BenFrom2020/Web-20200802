@@ -6,7 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>13_动画</title>
     <style>
-        #div1 {
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box {
             width: 200px;
             height: 200px;
             background: #ff0000;
@@ -15,23 +20,99 @@
 </head>
 
 <body>
+    <button id="hide">hide</button>
+    <button id="show">show</button>
+    <button id="toggle">toggle</button>
+
+    <button id="fade-out">fade-out</button>
+    <button id="fade-in">fade-in</button>
+    <button id="fade-toggle">fade-toggle</button>
+
+    <button id="slide-up">slide-up</button>
+    <button id="slide-down">slide-down</button>
+    <button id="slide-toggle">slide-toggle</button>
+
+    <button id="animate">animate</button>
     <button id="animated">animated</button>
-    <div id="div1"></div>
+    <button id="animate-extra">animated-extra</button>
+    <div id="box"></div>
 
 
     <script src="jquery-3.5.1.js"></script>
     <script src="jquery.easing.js"></script>
     <script>
         $(function() {
+            var $box = $('#box');
+
+            // 改变box的宽度 高度 透明度  直至display:none
+            $('#hide').on('click', function() {
+                $box.hide(2000);
+            });
+
+            // 改变box的宽度 高度 透明度  直至display:block
+            $('#show').on('click', function() {
+                $box.show(2000);
+            });
+
+            // 交替使用 show() 或者 hide()
+            $('#toggle').on('click', function() {
+                $box.toggle(2000);
+            });
+
+            // fade 改变元素的透明度
+            $('#fade-out').on('click', function() {
+                $box.fadeOut(2000);
+            });
+
+            $('#fade-in').on('click', function() {
+                $box.fadeIn(2000);
+            });
+            $('#fade-toggle').on('click', function() {
+                $box.fadeToggle(2000);
+            });
+
+            // slide    改变元素的高度
+            $('#slide-up').on('click', function() {
+                $box.slideUp(2000);
+            });
+
+            $('#slide-down').on('click', function() {
+                $box.slideDown(2000);
+            });
+
+            $('#slide-toggle').on('click', function() {
+                $box.slideToggle(2000);
+            });
+
+            // 默认动画属性为swing，还有easing
+            $('#animate').on('click', function() {
+                $box.animate({
+                    // 只能操作数值
+                    width: 300,
+                    height: 300,
+                }, 2000, 'swing', function() {
+                    console.log('默认动画执行完成');
+                });
+            });
+
+            // :animated    选择所有正在执行动画效果的元素
             $('#animated').on('click', function() {
-                $('#div1').animate({
+                $('#box:animated').css('background', '#00ff00');
+            });
+
+            // DIY动画 属性值easeInBounce
+            $('#animate-extra').on('click', function() {
+                $box.animate({
                     // 只能操作数值
                     width: 300,
                     height: 300,
                 }, 2000, 'easeInBounce', function() {
-                    console.log('动画执行完成');
+                    console.log('DIY动画执行完成');
                 });
             });
+
+            // 解决动画反复执行问题
+
         });
     </script>
 </body>

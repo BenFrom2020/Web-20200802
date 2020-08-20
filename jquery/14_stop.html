@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_stop</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="start">开始测试</button>
+    <button id="stopFF">stop(false,false)</button>
+    <button id="stopFT">stop(false,true)</button>
+    <button id="stopTF">stop(true,false)</button>
+    <button id="stopTT">stop(true,true)</button>
+    <div id="box"></div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        var $box = $('#box');
+        $(function() {
+            $('#start').on('click', function() {
+                $box.animate({
+                    height: 400,
+                }, 2000, 'swing', function() {
+                    console.log('动画第1步完成');
+                });
+
+                $box.animate({
+                    width: 500,
+                }, 2000, 'swing', function() {
+                    console.log('动画第2步完成');
+                });
+
+                $box.animate({
+                    height: 200,
+                }, 2000, 'swing', function() {
+                    console.log('动画第3步完成');
+                });
+
+                $box.animate({
+                    width: 200,
+                }, 2000, 'swing', function() {
+                    console.log('动画第4步完成');
+                });
+            });
+
+            $('#stopFF').on('click', function() {
+                $box.stop(false, false);
+            });
+
+            $('#stopFT').on('click', function() {
+                $box.stop(false, true);
+            });
+            $('#stopTF').on('click', function() {
+                $box.stop(true, false);
+            });
+            $('#stopTT').on('click', function() {
+                $box.stop(true, true);
+            });
+        });
+    </script>
+</body>
+
+</html>

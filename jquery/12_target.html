@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_target</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul id="ul1">
+        <li>011</li>
+        <li>012</li>
+        <li>013</li>
+        <li>014</li>
+        <li>015</li>
+    </ul>
+
+    <ul id="ul2">
+        <li>021</li>
+        <li>022</li>
+        <li>023</li>
+        <li>024</li>
+        <li>025</li>
+    </ul>
+
+    <ul id="ul3">
+        <li>031</li>
+        <li>032</li>
+        <li>033</li>
+        <li>034</li>
+        <li>035</li>
+    </ul>
+
+    <!-- 事件委托 -->
+    <script>
+        var oUl1 = document.getElementById('ul1');
+        oUl1.onclick = function(e) {
+            // e.target 为#ul1 或者li
+            console.log(e.target);
+            // this 为#ul1
+            console.log(this);
+            // e.currentTarget === this
+            console.log(e.currentTarget);
+
+            // 解决方案
+            if (e.target.tagName == 'LI') {
+                console.log(e.target);
+            } else {
+                console.log('其他区域');
+            }
+        };
+    </script>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#ul2').on('click', function(e) {
+                // e.target 为#ul1 或者li
+                console.log(e.target);
+                // this 为#ul1
+                console.log(this);
+                // e.currentTarget === this
+                console.log(e.currentTarget);
+            });
+
+            // 利用.on 第二参数 
+            // 第二参数 一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。
+            $('#ul3').on('click', 'li', function(e) {
+                // e.target -this -e.currentTarget 均为li
+                console.log(e.target);
+                console.log(this);
+                console.log(e.currentTarget);
+            });
+        });
+    </script>
+</body>
+
+</html>

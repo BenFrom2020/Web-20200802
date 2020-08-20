@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11_事件</title>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#div1').on('click', function() {
+                console.log(123);
+            }).hover(function() {
+                console.log('鼠标进入啦');
+            }, function() {
+                console.log('鼠标移出啦');
+            });
+        });
+    </script>
+</body>
+
+</html>

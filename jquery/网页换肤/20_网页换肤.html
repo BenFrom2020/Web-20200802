@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20_网页换肤</title>
+    <link rel="stylesheet" href="css/defaul.css">
+    <link rel="stylesheet" href="css/skin-0.css" id="cssfile">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul id="skin">
+            <li id="skin-0" title="灰色" class="selected">灰色</li>
+            <li id="skin-1" title="紫色">紫色</li>
+            <li id="skin-2" title="红色">红色</li>
+            <li id="skin-3" title="天蓝色">天蓝色</li>
+            <li id="skin-4" title="橙色">橙色</li>
+            <li id="skin-5" title="淡绿色">淡绿色</li>
+        </ul>
+        <div id="div-side-0">
+            <div id="news">
+                <h1 class="title">时事新闻</h1>
+            </div>
+        </div>
+        <div id="div-side-1">
+            <div id="game">
+                <h1 class="title">娱乐新闻</h1>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 获取日期
+        // var now = new Date();
+        // 设置日期
+        // now.setDate(now.getDate() + 30);
+        // cookie   设置保存时间
+        // document.cookie = 'username=xxx;expires=' + now.toUTCString();
+        // session 会话(关掉浏览器 会话结束)
+    </script>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <script>
+        $(function() {
+
+            if ($.cookie('skin')) {
+                changeSkin($.cookie('skin'));
+            }
+
+            $('#skin li').on('click', function() {
+                changeSkin($(this).attr('id'));
+
+                $.cookie('skin', $(this).attr('id'), {
+                    expires: 30,
+                });
+            });
+
+            function changeSkin(id) {
+                $('#' + id).addClass('selected').siblings().removeClass('selected');
+                $('#cssfile').attr('href', 'css/' + id + '.css');
+            }
+
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>

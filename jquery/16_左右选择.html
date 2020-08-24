@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16_左右选择</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div.content {
+            float: left;
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 30px;
+        }
+        
+        select {
+            width: 150px;
+            height: 200px;
+        }
+        
+        span {
+            display: block;
+            margin: 2px 2px;
+            padding: 4px 10px;
+            background: #898989;
+            cursor: pointer;
+            font-size: 12px;
+            color: white;
+        }
+        
+        #select1 option,
+        #select2 option {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <select multiple='multiple' id="select1">
+            <option value="1">选项1</option>
+            <option value="2">选项2</option>
+            <option value="3">选项3</option>
+            <option value="4">选项4</option>
+            <option value="5">选项5</option>
+            <option value="6">选项6</option>
+            <option value="7">选项7</option>
+        </select>
+        <div>
+            <span id="add">选中添加到右边</span>
+            <span id="add-all">全部添加到右边</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <select multiple="multiple" id="select2">
+            <option value="8">选项8</option>
+        </select>
+        <div>
+            <span id="remove">选中删除到左边</span>
+            <span id="remove-all">全部删除到左边</span>
+        </div>
+    </div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#add').on('click', function() {
+                $('#select1 option:selected').appendTo($('#select2'));
+            });
+
+            $('#add-all').on('click', function() {
+                $('#select1 option').appendTo($('#select2'));
+            });
+
+            $('#remove').on('click', function() {
+                $('#select2 option:selected').appendTo($('#select1'));
+            });
+
+            $('#remove-all').on('click', function() {
+                $('#select2 option').appendTo($('#select1'));
+            });
+
+            // 委托代理  解决:后添加元素  未绑定监听
+            $('#select1').on('dblclick', 'option', function() {
+                $(this).appendTo($('#select2'));
+            });
+
+            $('#select2').on('dblclick', 'option', function() {
+                $(this).appendTo($('#select1'));
+            });
+        });
+    </script>
+</body>
+
+</html>

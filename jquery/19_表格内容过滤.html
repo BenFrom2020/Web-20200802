@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19_表格内容过滤</title>
+    <style>
+        table {
+            border: 0;
+            border-collapse: collapse;
+        }
+        
+        td {
+            font: normal 12px/17px Arial;
+            padding: 2px;
+            width: 100px;
+        }
+        
+        th {
+            font: bold 12px/17px Arial;
+            text-align: left;
+            padding: 4px;
+            border-bottom: 1px solid #333333;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <br/>筛选:
+            <input id="filterName" />
+            <br/>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>暂住地</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>张三</td>
+                    <td>男</td>
+                    <td>浙江宁波</td>
+                </tr>
+                <tr>
+                    <td>李四</td>
+                    <td>女</td>
+                    <td>浙江杭州</td>
+                </tr>
+                <tr>
+                    <td>王五</td>
+                    <td>男</td>
+                    <td>湖南长沙</td>
+                </tr>
+                <tr>
+                    <td>赵六</td>
+                    <td>男</td>
+                    <td>浙江温州</td>
+                </tr>
+                <tr>
+                    <td>Rain</td>
+                    <td>男</td>
+                    <td>浙江杭州</td>
+                </tr>
+                <tr>
+                    <td>MANMAN</td>
+                    <td>女</td>
+                    <td>浙江杭州</td>
+                </tr>
+                <tr>
+                    <td>王六</td>
+                    <td>男</td>
+                    <td>浙江杭州</td>
+                </tr>
+                <tr>
+                    <td>李字</td>
+                    <td>女</td>
+                    <td>浙江杭州</td>
+                </tr>
+                <tr>
+                    <td>李四二</td>
+                    <td>男</td>
+                    <td>湖南长沙</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        $(function() {
+            $('#filterName').on('keyup', function() {
+                $('tbody tr').hide().children('td').filter('td:contains(' + this.value + ')').parent().show();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1_选择器</title>
+    <style>
+        /* 后一兄弟元素选择器 */
+        
+        #ul1 .aa1+li {
+            background: #ff0000;
+        }
+        /* 后all兄弟元素选择器 */
+        
+        #ul2 .aa2~li {
+            background: #00ff00;
+        }
+        /* 属性选择器1 */
+        
+        input[type="password"] {
+            background: #ff0000;
+        }
+        /* 属性选择器2 */
+        
+        input[name] {
+            background: #0000ff;
+        }
+        
+        #div1 {
+            width: 100px;
+            border: 1px solid;
+        }
+        /* 伪对象选择器 */
+        
+        #div1::first-line {
+            background: #ff0000;
+        }
+        /* 伪类选择器 */
+        
+        #test1 {
+            background: #ff0000;
+        }
+        
+        #test1:focus {
+            background: #00ff00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="ul1">
+        <li>001</li>
+        <li class="aa1">002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+
+
+    <ul id="ul2">
+        <li>001</li>
+        <li class="aa2">002</li>
+        <li>003</li>
+        <li>004</li>
+        <li>005</li>
+    </ul>
+
+    <input type="text" name="username">
+    <input type="text">
+    <input type="password">
+
+
+    <div id="div1">
+        这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是这是
+    </div>
+
+    <input id="test1" type="text">
+</body>
+
+</html>

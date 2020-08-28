@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10_弹性盒子模型2</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        .parent {
+            display: flex;
+            /* flex-direction: column; */
+        }
+        
+        .box {
+            height: 400px;
+            width: 0;
+        }
+        
+        .box1 {
+            background: #ff0000;
+            flex-grow: 1;
+        }
+        
+        .box2 {
+            background: #00ff00;
+            flex-grow: 2;
+        }
+        
+        .box3 {
+            background: #0000ff;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="box box1">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+        <div class="box box2">bbbbbbbbbb</div>
+        <div class="box box3">cccccccccccccccccccccccccccccc</div>
+    </div>
+
+
+</body>
+
+</html>

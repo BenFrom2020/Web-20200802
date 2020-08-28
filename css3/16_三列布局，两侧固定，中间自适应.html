@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16_三列布局，两侧固定，中间自适应</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        
+        #parent {}
+        
+        #left {
+            width: 300px;
+            height: 400px;
+            background: #ff0000;
+            float: left;
+        }
+        
+        #middle {
+            height: 400px;
+            flex-grow: 1;
+            background: #00ff00;
+            margin-right: 310px;
+            margin-left: 310px;
+        }
+        
+        #right {
+            width: 300px;
+            height: 400px;
+            background: #0000ff;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="middle"></div>
+</body>
+
+</html>

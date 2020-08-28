@@ -24,12 +24,51 @@
             overflow: hidden;
             text-overflow: ellipsis;
             /* text-overflow: clip; */
+            /* font-family: 'SourceHanSansCN-Medium'; */
+            /* 字体平滑度 */
+            /* -webkit-font-smoothing: antialiased; */
+            /* -moz-osx-font-smoothing: grayscale; */
         }
         
         #h1-3 {
             width: 200px;
             border: 1px solid;
             word-wrap: break-word;
+            /* 加入自定义 字体 */
+            /* font-family: 'SourceHanSansCN-Medium'; */
+        }
+        
+        @font-face {
+            font-family: "SourceHanSansCN-Light";
+            src: url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.woff2") format("woff2"), url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.woff") format("woff"), url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.ttf") format("truetype"), url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.eot") format("embedded-opentype"), url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.svg") format("svg"), url("fonts/SourceHanSansCN-Light/SourceHanSansCN-Light.otf")format("opentype");
+        }
+        
+        @font-face {
+            font-family: "SourceHanSansCN-Medium";
+            src: url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.woff2") format("woff2"), url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.woff") format("woff"), url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.ttf") format("truetype"), url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.eot") format("embedded-opentype"), url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.svg") format("svg"), url("fonts/SourceHanSansCN-Medium/SourceHanSansCN-Medium.otf")format("opentype");
+        }
+        
+        #div2 {
+            width: 800px;
+            height: 30px;
+            background: #cccccc;
+            border-radius: 5px;
+        }
+        
+        #div2-1 {
+            width: 300px;
+            height: 30px;
+            background: #000;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        #div3 {
+            width: 200px;
+            height: 200px;
+            background: #dddddd;
+            border-image: url(img/border-img.png) 30 repeat;
+            border-width: 30px;
+            border-style: solid;
         }
     </style>
 </head>
@@ -42,6 +81,15 @@
     <h1 id="h1-2">阿斯顿发送到发送到发的发送到发送到发送到发斯蒂芬</h1>
 
     <h1 id="h1-3">adfadsfasdfasdfasdfasdfasdfasdfasdfasdfasdf</h1>
+
+    <!-- 进度条 -->
+    <div id="div2">
+        <div id="div2-1"></div>
+    </div>
+
+    <br>
+    <br>
+    <div id="div3"></div>
 </body>
 
 </html>

@@ -15,6 +15,7 @@ a {
     height: 100%;
     background: url(../img/logo.png) no-repeat left center;
     background-size: contain;
+    overflow: hidden;
 }
 
 #nav li {
@@ -26,4 +27,13 @@ a {
     color: #626262;
     font-size: 15px;
     font-family: Regular;
+}
+
+#nav .split {
+    margin: 0 40px;
+}
+
+#nav {
+    margin-top: 50px;
+    margin-left: 200px;
 }

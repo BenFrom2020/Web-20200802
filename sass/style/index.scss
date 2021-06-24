@@ -1,0 +1,90 @@
+$color:#f00;
+$w:200px;
+#div1 {
+    width: $w;
+    height: $w;
+    background-color: $color;
+    .aa {
+        font-size: 12px;
+        .bb {
+            background-color: #cccccc;
+        }
+        &:hover {
+            background: #00ff00;
+        }
+    }
+}
+
+#div2 {
+    width: $w;
+    height: $w;
+    color: $color;
+}
+
+.dialog {
+    width: $w;
+    &-container {
+        height: $w;
+    }
+    &-title {
+        font-size: 18px;
+        &-close {
+            float: left;
+            background: {
+                color: $color;
+                image: url(xx.jpg);
+                position: right top;
+            }
+            ;
+            border: {
+                left: {
+                    color: transparent;
+                    style: solid;
+                    width: 2px;
+                }
+            }
+            ;
+        }
+    }
+}
+
+$bg:background;
+#div4 {
+    #{$bg}: $color;
+}
+
+@mixin xx($num, $c:#ccc) {
+    width: $num;
+    height: $num;
+    background: $c;
+}
+
+#div5 {
+    @include xx(200px, #f00);
+    font-size: 20px;
+}
+
+#div6 {
+    @include xx($c: #0f0, $num: 300px);
+}
+
+#div7 {
+    @include xx($num: 400px);
+    .aa {
+        background: $color;
+    }
+}
+
+#div8 {
+    @extend #div7;
+    font-size: 20px;
+}
+
+@import 'base/common';
+#div9 {
+    width: (10px/10);
+}
+
+#div10 {
+    width: percentage(3/100);
+}

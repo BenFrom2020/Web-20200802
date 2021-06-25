@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #div1 {
   width: 200px;
   height: 200px;
@@ -71,5 +72,54 @@ img {
 
 #div10 {
   width: 3%; }
+
+#div11 {
+  background: #000; }
+
+#div12 {
+  font-size: 20px; }
+
+/*当前的属性是font-size*/
+#div13 {
+  background: #000; }
+
+.col1-log-1 {
+  width: 1%; }
+
+.col1-log-2 {
+  width: 2%; }
+
+.col1-log-3 {
+  width: 3%; }
+
+.col2-log-1 {
+  width: 1%; }
+
+.col2-log-2 {
+  width: 2%; }
+
+.glyphicon-plus {
+  background: url("glyphicon-plus.png"); }
+
+.glyphicon-music {
+  background: url("glyphicon-music.png"); }
+
+.glyphicon-search {
+  background: url("glyphicon-search.png"); }
+
+.glyphicon-heart {
+  background: url("glyphicon-heart.png"); }
+
+.col-md-5 {
+  width: 5%; }
+
+.col-md-3 {
+  width: 3%; }
+
+.col-md-1 {
+  width: 1%; }
+
+#div14 {
+  background: #ccc; }
 
 /*# sourceMappingURL=index.css.map */

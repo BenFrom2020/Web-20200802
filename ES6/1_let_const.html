@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="nav">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+
+    <ul id="nav1">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+
+    <ul id="nav3">
+        <li>001</li>
+        <li>002</li>
+        <li>003</li>
+        <li>004</li>
+    </ul>
+
+    <script>
+        // var -> variable
+        var a = 5;
+
+        function foo() {
+            // 声明局部变量a
+            var a = 6;
+            console.log('1==' + a);
+        }
+        foo();
+        console.log('2==' + a);
+    </script>
+
+    <script>
+        // 变量提升
+        console.log(b);
+        var b = 7;
+
+        // 相当于
+        // var b;
+        // console.log(b);
+        // b = 7;
+    </script>
+
+    <script>
+        for (var i = 0; i < 5; i++) {
+            console.log(i);
+        }
+        //for循环块外i会输出5,js中没有块作用域，所以i的作用域在循环外也能引用
+        console.log(i);
+    </script>
+
+    <script>
+        if (false) {
+            var c = 5;
+        }
+        // if中的var c;会影响到外部的c
+        console.log(c);
+    </script>
+
+    <script>
+        // let不存在变量提升
+        // console.log(d);
+        // let d = 10;
+    </script>
+
+    <script>
+        // let不允许重复声明
+        let e = 7;
+        // let e = 8;
+        console.log(e);
+    </script>
+
+    <script>
+        // let存在块级作用域
+        for (let f = 0; f < 5; f++) {
+            console.log(f);
+        }
+        // console.log(f);
+    </script>
+
+    <script>
+        // let存在块级作用域
+        if (false) {
+            let g = 10;
+        }
+        // console.log(g);
+    </script>
+    <script>
+        // 暂时性死区：封闭作用域，凡是再声明之前就使用这些变量，就会报错
+        function foo1() {
+            // console.log(h);
+            let h = 6;
+        }
+        foo1();
+    </script>
+
+    <script>
+        // 老方式，为列表的每行加监听，并在点击时输出下标
+        var aLi = document.querySelectorAll('#nav li');
+        console.log(aLi);
+        for (var i = 0; i < aLi.length; i++) {
+            aLi[i].index = i;
+            aLi[i].onclick = function() {
+                console.log(this.index);
+            };
+        }
+    </script>
+
+    <script>
+        // 闭包，闭包太多容易造成 内存泄露，因为所有的变量都一直在被引用
+        var aLi1 = document.querySelectorAll('#nav1 li');
+        for (var j = 0; j < aLi1.length; j++) {
+            // 函数内调用
+            // 外部函数里有一个内部函数，内部函数引用外部函数的变量，该变量不会被释放。
+            (function(idx) {
+                aLi1[j].onclick = function() {
+                    console.log(idx);
+                };
+            })(j);
+        }
+    </script>
+
+    <script>
+        // 最简单闭包
+        function fn1() {
+            return function fn2() {
+                var k = 5;
+                return k;
+            }
+        }
+        // fn1()()第一个括号调用fn1，返回fn2，第二个括号调用fn2，返回k；
+        console.log(fn1()());
+    </script>
+
+    <script>
+        var aLi2 = document.querySelectorAll('#nav3 li');
+        for (let l = 0; l < aLi2.length; l++) {
+            aLi2[l].onclick = function() {
+                console.log(l);
+            };
+        }
+    </script>
+
+    <script>
+        // 常量，定义后不可再被改变
+        // const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动
+        /*       
+        const m = 5;
+        m = 6;
+ */
+        const obj = {
+            name: 'zhangsan',
+            age: 18
+        };
+
+        // 对象再堆内存中地址未改变，所以对象属性的值可以改变
+        obj.age = 20;
+        console.log(obj);
+
+        // 对象冻结后，不可改变
+        Object.freeze(obj);
+        obj.age = 21;
+        console.log(obj);
+
+        // 此处obj带大括号，相当于new Object(),需要用新的地址，所以不能改变
+        /* 
+                 obj = {
+                 age: 20
+                };
+         */
+
+        //数组也是对象，push并未改变 数组的地址 
+        const arr = [1, 2, 3, 4];
+        arr.push(5);
+        console.log(arr);
+    </script>
+
+    <script>
+        var aa = 566;
+        console.log(window.aa);
+
+        // bb并不在window里
+        let bb = 677;
+        console.log(window.bb);
+    </script>
+
+
+    <script>
+        fooa();
+        // 方法提升，比变量提升等级更高
+        function fooa() {
+            console.log(456);
+        }
+    </script>
+
+
+    <script>
+        // 此种定义函数，不能提前调佣;
+        // foob();
+        var foob = function() {
+            console.log(789);
+        }
+    </script>
+
+    <script>
+        // 此处方法cc提升等级更高，输出cc是会优先读取方法cc（避免属性与方法同名）
+        console.log('1==' + cc);
+        var cc = 890;
+
+        function cc() {
+            console.log('2==' + cc);
+        }
+        // 此处cc被var cc=890;赋值，取代了原来的cc方法
+        // cc();
+
+        console.log('3==' + cc);
+    </script>
+
+    <script>
+        {
+            // 大括号内为块
+
+            var abc = 5;
+            let bcd = 6;
+        }
+        // var无块级作用域，可以在块外部调用
+        console.log(abc);
+        // let有块级作用域，不可以在块外调用
+        // console.log(bcd);
+    </script>
+
+</body>
+
+</html>

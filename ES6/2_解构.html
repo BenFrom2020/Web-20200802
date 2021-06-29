@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let arr = [1, 2, 3];
+        let a = arr[0];
+        let b = arr[1];
+        let c = arr[2];
+        console.log(a, b, c);
+    </script>
+
+    <script>
+        // 数组解构
+        let [d, e, f] = [4, 5, 6];
+        console.log(d, e, f);
+    </script>
+
+    <script>
+        // 数组解构 左边与右边相对应
+        let [g, [h, i], j] = [7, [8, 9], 10];
+        console.log(g, h, i, j);
+    </script>
+
+    <script>
+        // 数组解构 l=12,13无变量接收
+        let [k, [l], m] = [11, [12, 13], 14];
+        console.log(k, l, m);
+    </script>
+
+    <script>
+        // 数组解构 此处p为undefined
+        let [n, [o, p], q] = [15, [16], 17];
+        console.log(n, o, p, q);
+    </script>
+
+    <script>
+        let obj = {
+            name: 'lisi',
+            age: 18
+        }
+
+        let name = obj.name;
+        let age = obj.age;
+        console.log(name, age);
+    </script>
+
+    <script>
+        // 对象解构     左右key值一样
+        let {
+            name2,
+            age2
+        } = {
+            name2: 'zhangsan',
+            age2: 20
+        };
+        console.log(name2, age2);
+    </script>
+
+    <script>
+        // 对象解构 可以取小名，引用时只用使用小名name3、age3，不能使用大名（key）name、age
+        let {
+            name: name3,
+            age: age3
+        } = {
+            name: 'wangwu',
+            age: 21
+        };
+        console.log(name3, age3);
+    </script>
+
+    <script>
+        // 字符串遍历
+        let str = 'weichuang';
+        for (let i = 0; i < str.length; i++) {
+            console.log(str[i]);
+        }
+    </script>
+
+    <script>
+        // 字符串解构 把字符串当做数组解构
+        let [sa, sb, sc, sd, se, sf, sg, sh, si] = 'weichuang';
+        console.log(sa, sb, sc, sd, se, sf, sg, sh, si);
+    </script>
+
+    <script>
+        // 解构 可以给变量付初始值，ac值为8
+        let [aa, ab, ac = 8] = [4, 5];
+        console.log(aa, ab, ac);
+    </script>
+
+    <script>
+        // 解构 可以给变量付初始值，先取初始值8，再赋新值6，所以bc输出值为6
+        let [ba, bb, bc = 8] = [4, 5, 6];
+        console.log(ba, bb, bc);
+    </script>
+
+
+    <script>
+        // 函数参数的解构赋值
+        function fooc([ca, cb, cc]) {
+            console.log(ca, cb, cc);
+        }
+
+        let arrc = [4, 5, 6];
+        fooc(arrc);
+    </script>
+
+    <script>
+        // 函数参数的解构赋值
+        function food({
+            named,
+            aged,
+            schoold = 'XX大学'
+        }) {
+            console.log(named, aged, schoold);
+        }
+        let objd = {
+            named: 'zs',
+            aged: 20
+        };
+        food(objd);
+    </script>
+
+    <script>
+        // 返回值解构
+        function fooe() {
+            let obje = {
+                namee: 'lw',
+                agee: 22
+            };
+            return obje;
+        }
+
+        let {
+            namee,
+            agee
+        } = fooe();
+        console.log(namee, agee);
+    </script>
+
+    <script>
+        // 变量互换     方法一：引入第三个变量
+        let fa = 5;
+        let fb = 6;
+        let temp = fa;
+        fa = fb;
+        fb = temp;
+        console.log(fa, fb);
+    </script>
+
+    <script>
+        // 变量互换 方法二
+        let ga = 5;
+        let gb = 6;
+        ga = ga + gb;
+        gb = ga - gb;
+        ga = ga - gb;
+        console.log(ga, gb);
+    </script>
+
+    <script>
+        // 变量互换
+        var ha = 5;
+        var hb = 6;
+        var [hb, ha] = [ha, hb];
+        console.log(ha, hb);
+    </script>
+
+    <script>
+        // 变量互换
+        var ia = 7;
+        var ib = 8;
+        var ia = [ib, ib = ia][0];
+        console.log(ia, ib);
+    </script>
+
+    <script>
+        // json
+        let json = '{"a": "Hello", "b": "World"}';
+        // 将字符串转换为对象
+        let objj = JSON.parse(json);
+        console.log(objj);
+    </script>
+
+    <script>
+        // json
+        let objk = {
+            a: 'Hello',
+            b: 'World'
+        };
+        // 将对象转化为字符串
+        let strk = JSON.stringify(objk);
+        console.log(strk);
+    </script>
+
+    <script>
+        // json解构
+        let jsonl = '{"al": "Hello", "bl": "World"}';
+        let {
+            al,
+            bl
+        } = JSON.parse(jsonl);
+        console.log(al, bl);
+    </script>
+</body>
+
+</html>
+
+<!-- xml -->
+<!-- 传输体积，不常用了 -->
+<userinfo>
+    <username>zhangsan</username>
+    <age>18</age>
+    <school>黑大</school>
+</userinfo>

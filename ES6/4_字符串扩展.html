@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_字符串扩展</title>
+</head>
+
+<body>
+    <script>
+        let str = '123@456@789';
+        console.log(str.split('@'));
+    </script>
+
+    <script>
+        // 模板字符串:反引号``  
+        // 支持变量引用 ${}、支持标签、换行、数学运算
+        let he = 'hello';
+        let ha = 5;
+        let hb = 6;
+        let stre = `asd${he}fas
+         df${ha+hb}as<h1>h1h1h1</h1>ddfdsfa
+         fasdf`;
+        console.log(stre);
+        document.write(stre);
+    </script>
+
+    <script>
+        let strf = 'hello world';
+        // 检索字符串中 目标字符串'll'的位置,返回索引
+        console.log(strf.indexOf('ll'));
+        // 检索字符串中 是否包含 目标字符串'll'
+        console.log(strf.includes('ll'));
+        // 检索字符串 是否 以目标字符串'he'开始
+        console.log(strf.startsWith('he'));
+        // 检索字符串 是否 以目标字符串'ld'结束
+        console.log(strf.endsWith('ld'));
+
+        // 填充
+        let strg = 'xy';
+
+        console.log(strg.padStart(1, 'abc'));
+        console.log(strg.padStart(2, 'abc'));
+        console.log(strg.padStart(4, 'abc'));
+        console.log(strg.padStart(5, 'abc'));
+        console.log(strg.padStart(6, 'abc'));
+
+        console.log(strg.padEnd(1, 'abc'));
+        console.log(strg.padEnd(2, 'abc'));
+        console.log(strg.padEnd(4, 'abc'));
+        console.log(strg.padEnd(5, 'abc'));
+        console.log(strg.padEnd(6, 'abc'));
+
+        // 重复     3次
+        console.log(strg.repeat(3));
+    </script>
+
+    <script>
+        let ah = 5;
+        // 十进制转化为二进制，或者十六进制
+        console.log(ah.toString(2));
+
+        let bh = 101;
+        // parseInt 是 window.parseIn,第二个参数表示传入的变量是 二进制的
+        // 二进制转化为十进制，此处数字不能以0开始，例如0101
+        console.log(parseInt(bh, 2));
+
+        // 0B表示二进制 0O表示八进制
+        let ai = 0B0101;
+        console.log(ai);
+
+        let bi = 0O666;
+        console.log(bi);
+
+        // window一些方法移植到Number对象上面，行为完全保持不变，这样做的目的，是逐步减少全局性方法，使得语言逐步模块化。
+        // 判断是否为数字
+        console.log(Number.isFinite(5));
+        console.log(Number.isFinite(NaN));
+        console.log(Number.isFinite(null));
+        console.log(Number.isFinite(undefined));
+        console.log(Number.isFinite(0));
+
+        // 判断是否 不是数字
+        console.log(Number.isNaN(NaN));
+        console.log(Number.isInteger(5));
+        console.log(Number.parseFloat(5));
+        console.log(Number.parseInt(5.5));
+
+        // 最大值    2的53次幂
+        let max = Math.pow(2, 53);
+        console.log(max);
+        console.log(max + 1);
+        // 判断是否为安全值
+        console.log(Number.isSafeInteger(500000));
+        // 最大安全整数
+        console.log(Number.MAX_SAFE_INTEGER);
+        // 最小安全整数
+        console.log(Number.MIN_SAFE_INTEGER);
+
+        // 取整
+        console.log(Math.trunc(5.9));
+        // 向下取整
+        console.log(Math.floor(5.9));
+        // 判断一个数到底是正数、负数、还是零
+        console.log(Math.sign(2));
+        console.log(Math.sign(-2));
+        console.log(Math.sign(0));
+    </script>
+</body>
+
+</html>

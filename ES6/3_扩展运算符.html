@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3_扩展运算符</title>
+</head>
+
+<body>
+
+    <script>
+        // 扩展运算符   不确定参数
+        function foo(...arg) {
+            console.log(arg);
+        }
+        foo(1, 2, 3);
+        foo(1, 2);
+    </script>
+
+    <script>
+        // 扩展运算符   数组合并
+        let arra1 = [1, 2];
+        let arra2 = [3, 4];
+
+        let arra3 = [3, ...arra1, 4];
+        console.log(arra3);
+    </script>
+
+    <script>
+        // 扩展运算符   复制数组
+        // 浅拷贝   arrb1把堆内存中的地址复制给了arrb2，因此当arrb1数组改变时，arrb2也跟着改变
+        let arrb1 = [1, 2, 3];
+        let arrb2 = arrb1;
+        arrb1.push(4);
+        console.log(arrb2);
+    </script>
+
+    <script>
+        // 扩展运算符   复制数组
+        // 深拷贝
+        let arrc1 = [1, 2, 3];
+        let arrc2 = [...arrc1]; //相当于 new Array();
+        arrc1.push(4);
+        console.log(arrc2);
+    </script>
+
+    <script>
+        // 扩展运算符   合并数组
+        let arrd1 = [5, 6];
+        let arrd2 = [7, 8];
+
+        let arrd3 = [...arrd1, ...arrd2];
+        console.log(arrd3);
+    </script>
+
+    <script>
+        // 扩展运算符   合并对象
+        let obj1 = {
+            name: 'zs',
+            age: 18
+        };
+
+        let obj2 = {
+            age: 20,
+            school: 'hd'
+        };
+        // $.extend();
+        let obj3 = {...obj1,
+            ...obj2
+        };
+        console.log(obj3);
+    </script>
+
+    <script>
+        // 扩展运算符 解构
+        let obja1 = {
+            namea: 'zs',
+            agea: 18
+        };
+
+        // 不用扩展运算符也可以直接解构
+        // let {namea, agea} = obja1;
+        let {
+            namea,
+            agea
+        } = {...obja1
+        };
+        console.log(namea, agea);
+    </script>
+
+    <script>
+        // 扩展运算符   rest剩余的，此时...arg必须是最后一个参数
+        function fooc(a, b, ...arg) {
+            console.log(a);
+            console.log(b);
+            console.log(arg);
+        }
+
+        fooc(1, 2, 3, 4, 5, 6, 7);
+    </script>
+</body>
+
+</html>

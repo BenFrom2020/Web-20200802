@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+
+<body>
+
+    <script>
+        // 方法 传统写法1
+        function sum(x, y) {
+            return x + y;
+        }
+
+        console.log(sum(5, 6));
+    </script>
+
+    <script>
+        // 方法 传统写法2
+        let suma = function sum(x, y) {
+            return x + y;
+        }
+
+        console.log(suma(2, 6));
+    </script>
+
+    <script>
+        // =>的左面是参数  =>右面是方法体
+        // 箭头函数写法1
+        let sumb = (x, y) => {
+            return x + y;
+        }
+
+        console.log(sumb(7, 8));
+    </script>
+
+    <script>
+        // 箭头函数 写法2   省略大括号
+        let sumc = (x, y) => x + y;
+        console.log(sumc(12, 14));
+    </script>
+
+    <script>
+        let x = x => x;
+        // 上面一行代码 相当于 以下代码
+        // let x = function(x) {
+        //     return x;
+        // }
+    </script>
+
+    <script>
+        // 箭头函数 不可以当作构造函数，不可以使用new命令，否则会抛出一个错误
+        // let Animalb = (name, age) => {
+        //     console.log(this);
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // let animalb1 = new Animalb('zs', 15);
+    </script>
+
+    <script>
+        // 使用arguments的函数
+        function fooa() {
+            console.log(arguments);
+        }
+        fooa(4, 5, 6);
+    </script>
+
+    <script>
+        // 箭头函数 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用...rest参数代替
+        // let foob = () => {
+        //     console.log(arguments);
+        // }
+        // foob();
+    </script>
+
+    <script>
+        // 箭头函数 不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用...rest参数代替
+        let fooc = (...arg) => {
+            console.log(arg);
+        }
+        fooc(7, 8, 9);
+    </script>
+</body>
+
+</html>

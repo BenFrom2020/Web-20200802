@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8_严格模式</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        'use strict';
+        // 全局变量必须 声明
+        var a = 5;
+        console.log(a);
+    </script>
+
+    <script>
+        'use strict';
+
+        // 禁止this关键字指向全局对象   构造函数必须用new
+        function fooa() {
+            // 直接调用 非严格模式下指向 window
+            // 直接调用 严格模式输出为 undefined
+            console.log(this);
+        }
+        fooa();
+
+        function Animala(name, age) {
+            // 严格模式下 this 指向实例化的对象
+            console.log(this);
+            this.name = name;
+            this.age = age;
+        }
+        // 实例化
+        let animala1 = new Animala('xx', 55);
+    </script>
+
+    <script>
+        // 'use strict'
+        // 函数不能有重名的参数
+        // 非严格模式下 会输出5，6
+        function foob(a, a, b) {
+            console.log(a, b);
+        };
+        foob(4, 5, 6);
+    </script>
+
+    <script>
+        // 'use strict'
+        // 禁止使用with语句
+        console.log(this);
+        let obj = {
+            name1: 'zs',
+        };
+
+        with(obj) {
+            console.log(name1);
+        }
+    </script>
+
+    <script>
+        // arguements.callee
+        function fn(n) {
+            if (n == 1) {
+                return 1;
+            }
+            return n * fn(n - 1);
+        }
+
+        console.log(fn(5));
+    </script>
+
+    <script>
+        // 'use strict'
+        //严格模式下禁止使用 arguements.callee()
+        function fn(n) {
+            if (n == 1) {
+                return 1;
+            }
+            // argruments.callee调用函数自己本身
+            return n * arguments.callee(n - 1);
+        }
+
+        console.log(fn(5));
+    </script>
+
+    <script>
+        function fooa(a, b = 8) {
+            // 函数内部
+            // 'use strict';
+            // ES6：规定只要函数参数使用了默认值、解构赋值、或者扩展运算符，那么函数内部就不能显式设定为严格模式，否则会报错
+
+            console.log(a, b);
+        }
+        fooa(2, 3);
+    </script>
+</body>
+
+</html>

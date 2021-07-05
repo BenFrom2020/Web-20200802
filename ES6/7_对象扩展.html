@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7_对象扩展</title>
+</head>
+
+<body>
+    <script>
+        let n = 'name';
+        let zs = 'zhangsan';
+        let age = 18;
+        let obj = {
+            //在key出引入变量   []
+            [n]: zs,
+            // 可以只用被赋值的变量age，代替整个赋值age: 18，
+            // age: 18,
+            age,
+            // 对象内方法的 另一种写法
+            code() {
+                console.log('coding');
+            }
+            // code: function() {
+            //     console.log('coding');
+            // }
+        }
+
+        console.log(obj);
+        obj.code();
+    </script>
+
+    <script>
+        // 2=='2'               true    判断值是否相等
+        // 2==='2'              false   判断值是否相等，且同时判断类型是否相同
+        // +0 == -0             true
+        // +0 === -0            true
+        // Object.is(+0,-0)     false
+        // NaN == NaN           false
+        // Object.is(NaN, Nan)  true
+    </script>
+
+    <script>
+        // 判断两个对象是否相等 返回false，两个对象指向不同的空间
+        let obja1 = {
+            name: 'zs',
+            age: 18
+        };
+
+        let obja2 = {
+            name: 'zs',
+            age: 18
+        };
+
+        console.log(obja1 == obja2);
+        console.log(Object.is(obja1, obja2));
+    </script>
+
+    <script>
+        // Object.is('foo','foo')   比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致
+        // 判断两个对象是否相等 返回true，两个对象指向相同的空间
+        let objb1 = {
+            name: 'zs',
+            age: 18
+        };
+        let objb2 = objb1;
+
+        console.log(objb1 == objb2);
+        console.log(Object.is(objb1, objb2));
+    </script>
+
+    <script>
+        // 合并对象 Object.assign()
+        // 第一个参数是目标对象，后面的参数都是源对象。浅拷贝
+        let objc1 = {
+            name: 'zs',
+            age: 18
+        };
+
+        let objc2 = {
+            name: 'lisi',
+            age: 20,
+            school: 'xx'
+        };
+
+        Object.assign(objc1, objc2);
+
+        console.log(objc1);
+    </script>
+
+    <script>
+        // 对象是否包含某个属性 'key' in obj
+        let objd1 = {
+            name: 'zs',
+            age: 18
+        };
+
+        console.log('name' in objd1);
+    </script>
+
+    <script>
+        // 判断数组该位置是否有值
+        let arre1 = [4, 5, 6];
+        console.log(3 in arre1);
+    </script>
+</body>
+
+</html>

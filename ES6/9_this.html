@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>_this</title>
+</head>
+
+<body>
+    <button id="btn">btn</button>
+    <button id="btnh">btnh</button>
+    <button id="btni">btni</button>
+    <button id="btnj">btnj</button>
+    <button id="btnk">btnk</button>
+
+
+    <script>
+        // 普通函数，this指向对象为window
+        function foo() {
+            console.log(this);
+        }
+
+        foo(); //window.foo();
+
+        // 此时 this指向为 window
+        setTimeout(function() {
+            console.log(this);
+        }, 1000);
+
+        // 此时 this指向对象为 btn
+        let oBtn = document.getElementById('btn');
+        oBtn.onclick = function() {
+            console.log(this);
+        }
+
+        // 定义类
+        // 此时 this指向Animal实例化的对象a1,a2
+        function Animal(name, age) {
+            console.log(this);
+            this.name = name;
+            this.age = age;
+        }
+
+        // 实例化对象
+        let a1 = new Animal('xx', 5);
+        let a2 = new Animal('yy', 7);
+
+        // 
+        let objf = {
+            name: 'zs',
+            age: 18
+        };
+
+        // 此时 this 指向window
+        function foof() {
+            console.log(this);
+        }
+        foof();
+
+        //此时 this 指向对象objf 
+        function foog(a, b) {
+            console.log(this);
+            console.log(a, b);
+        }
+        // function.call(x) 第一个参数为 this指向的对象objf  后面是要传入的参数
+        foog.call(objf, 5, 6);
+
+        // function.apply(x,[]) 第一个参数为 this指向的对象objf  后面数组是要传入的参数
+        foog.apply(objf, [7, 8]);
+
+        //bind只是改变指向对象，不会执行函数
+        // 不执行函数，可以不传参数 2,3
+        foog.bind(objf, 2, 3);
+        // 改变指向对象  并 执行函数的两种方式
+        foog.bind(objf, 2, 3)();
+        foog.bind(objf)(2, 3);
+    </script>
+
+    <script>
+        let Obtnh = document.getElementById('btnh');
+        let Obtni = document.getElementById('btni');
+        let Obtnj = document.getElementById('btnj');
+        let Obtnk = document.getElementById('btnk');
+        Obtnh.onclick = function() {
+            console.log(this);
+            setTimeout(function() {
+                // 此处this 指向window
+                console.log(this);
+            }, 2000);
+        };
+
+        Obtni.onclick = function() {
+            console.log(this);
+            // 绑定指向对象方法一   或者变量名用_this
+            var that = this;
+            setTimeout(function() {
+                // 此处this 指向Obtni
+                console.log(that);
+            }, 2000);
+        };
+
+        Obtnj.onclick = function() {
+            console.log(this);
+            setTimeout(function() {
+                // 此处this 因为bind    所以指向Obtnj
+                console.log(this);
+            }.bind(this), 2000); //此时this在函数外层，指向Obtnj
+        };
+
+
+        Obtnk.onclick = function() {
+            console.log(this);
+            // 箭头函数体的this对象，就是定义是所在的对象，而不是使用时所在的对象
+            // 箭头函数里面没有this，作用域链院里，所以this指向Obtnk
+            setTimeout(() => {
+                console.log(this);
+            }, 2000);
+        };
+    </script>
+</body>
+
+</html>

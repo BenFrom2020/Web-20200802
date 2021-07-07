@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+
+<body>
+    <ul id="list"></ul>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        // AJAX:Asynchronous JavaScript And XML（异步JavaScript和XML）
+        // AJAX不是新的编程语言，而是一种使用现有标准的新方法
+        // AJAX是与服务器交换数据并更新部分网页的艺术，在不重新加载整个页面的情况下
+
+        // jquery Ajax
+        // 如果请求不成功需要拼接以下代理，（一般不允许跨越访问）
+        // https://bird.ioliu.cn/v1?url=
+        // https://movie.querydata.org/api?id=1302425   API一
+        // https://movie.querydata.org/api?id=1302425   API二
+        // Ajax请求
+        $.get('https://movie.querydata.org/api?id=1302425', {}, res => {
+            console.log(res);
+
+            let $list = $('#list');
+            for (let actor of res.actor) {
+                let $li = $(`<li>${actor.data[0].name}</li>`);
+                $list.append($li);
+            }
+        }, 'json');
+    </script>
+
+    <script>
+        // 原生Ajax
+        // 第一步 创建XMLHttpRequest对象
+        // 能力检测
+        var xmlhttp;
+        if (window.XMLHttpRequest) { //code for IE7+,Firefox,Chrome,Safari
+            xmlhttp = new XMLHttpRequest();
+        } else { // cede for IE6,IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        // 第二步   向服务端发送请求
+        xmlhttp.open("GET", "https://movie.querydata.org/api?id=1302425", true);
+        xmlhttp.send();
+
+        // 第三步   服务端响应
+        xmlhttp.onreadystatechange = function() {
+            // 4表示 请求已完成，且响应已就绪
+            // 200表示正常
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                console.log(xmlhttp.responseText);
+                // 把字符串装换为对象
+                let obj = JSON.parse(xmlhttp.responseText);
+                console.log(obj);
+                // document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+            }
+        }
+    </script>
+</body>
+
+</html>

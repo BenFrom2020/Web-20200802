@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12_promise2</title>
+</head>
+<body>
+<script src="jquery-3.5.1.js"></script>
+<script>
+    let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(1);
+            console.log('p1');
+        }, 1000);
+    });
+
+    let p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // resolve(2);
+            reject(-1);
+            console.log('p2');
+        }, 2000);
+    });
+
+    let p3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(3);
+            console.log('p3');
+        }, 3000);
+    });
+    // Promise.race有一个完成 即为完成
+    //Promise.all 有一个失败 即为失败
+    Promise.all([p1, p2, p3]).then(res => {
+        console.log('全完成');
+        console.log(res);
+    }, err => {
+        console.log('失败了');
+        console.log('err --- ' + err);
+    });
+
+    // then的另一种写法 then().catch()
+    let p4 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('p4');
+            reject(4);
+        }, 4000);
+    }).then(res => {
+        console.log('成功');
+    }).catch(err => {
+        console.log('失败');
+        console.log(err);
+    });
+
+    // catch报错
+    throw new Error('这是个错误');
+
+    // 只处理成功的   Promise.resolve()
+    // 只处理失败的   Promis.reject()
+
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12_promise</title>
+</head>
+
+<body>
+<script src="jquery-3.5.1.js"></script>
+<script>
+    // callback hell回调地狱
+    //
+    // $.get('a.json', res => {
+    //     console.log(res);
+    //     $.get('b.json', res => {
+    //         console.log(res);
+    //         $.get('c.json', res => {
+    //             console.log(res);
+    //         });
+    //     });
+    // });
+    //
+</script>
+<script>
+    // Promise是异步编程的一种解决方案，比传统的解决方案---更合理和更强大。回调函数和事件
+    new Promise((resolve, reject) => {
+        $.get('d.json', res => {
+            console.log(res);
+            // 如果成功调用resolve() 如果失败调用reject()
+            resolve(res.d);
+        });
+        // resA是resolve()传的参数res.d
+    }).then((resD) => {
+        // d成功
+        console.log("d成功");
+        console.log(resD);
+        // 请求d成功后请求e
+        return new Promise((resolve, reject) => {
+            $.get('e.json', res => {
+                console.log(res);
+                resolve(res.e);
+            });
+        });
+    }, () => {
+        // d失败
+        console.log("d失败");
+    }).then((resE) => {
+        // e成功
+        console.log('e成功');
+        console.log(resE);
+        return new Promise((resolve, reject) => {
+            $.get('f.json', res => {
+                console.log(res);
+                resolve(res.f);
+            });
+        });
+    }, () => {
+        // e失败
+    }).then((resF) => {
+        // f成功
+        console.log('f成功');
+        console.log((resF));
+    }, () => {
+        // f失败
+    });
+</script>
+
+<script>
+    // 简化以上代码
+    function getPromise(url) {
+        return new Promise(
+            (resolve, reject) => {
+                $.get(url, res => {
+                    resolve(res);
+                }, 'json')
+            }
+        );
+    }
+
+    getPromise('a.json').then(res => {
+        console.log('a成功');
+        console.log(res);
+        return getPromise('b.json');
+    }, err => {
+    }).then(res => {
+        console.log('b成功');
+        console.log(res);
+        return getPromise('c.json');
+    }, err => {
+    }).then(res => {
+        console.log('c成功');
+        console.log(res);
+    }, err => {
+    });
+</script>
+
+
+</body>
+
+</html>

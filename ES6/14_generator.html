@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14_generator</title>
+</head>
+
+<body>
+    <script src="jquery-3.5.1.js"></script>
+    <script>
+        function* helloWorldGenerator() {
+            yield 'hello';
+            yield 'world';
+            return 'ending';
+        }
+
+        var hw = helloWorldGenerator();
+        console.log(hw.next());
+        console.log(hw.next());
+        console.log(hw.next());
+    </script>
+
+    <script>
+        function* foo(x) {
+            var y = 2 * (yield(x + 1));
+            var z = yield(y / 3);
+            return (x + y + z);
+        }
+
+        var a = foo(5);
+        console.log(a.next()); // 6,false   yield返回值为undefined，所以y为NaN
+        console.log(a.next()); // NaN,false yield返回值为undefined，所以z为NaN
+        console.log(a.next()); // NaN,true, x值5，但y,z为NaN，所以return值为NaN
+
+
+        var b = foo(5);
+        // next括号中的参数为 上一个yield的返回值
+        console.log(b.next()); // 6,false
+        console.log(b.next(12)); // 8,false
+        console.log(b.next(13)); // 42,true
+    </script>
+
+    <script>
+        function request(url) {
+            $.get(url, res => {
+                console.log(res);
+                getData.next();
+            });
+        }
+
+        function* gen() {
+            yield request('a.json');
+            yield request('b.json');
+            yield request('c.json');
+        }
+
+        let getData = gen();
+        getData.next();
+    </script>
+</body>
+
+</html>
